@@ -65,7 +65,7 @@ if (isset($_SESSION['id'])) {
     		<h1>ExoLisT - New</h1>
   		</div>
 	<div data-role="main" class="ui-content">
-		<form id="newlist_title" action="new.php" method="post">
+		<form id="newlist_title" action="new.php" method="GET">
 			<legend><h3>Create a new List</h3></legend>
 			<label for="nlist_title">Title: </label>
 			<input type="text" id="nlist_title" name="nlist_title" />

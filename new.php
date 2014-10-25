@@ -7,24 +7,22 @@ header("Expires: Mon, 26 Jun 1997 05:00:00 GMT");
 header("Pragma: no-cache");
 header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
 	//processing new list into database
-		$listitle = mysqli_real_escape_string($dbCon, $_POST['nlist_title']);
-		$listype = mysqli_real_escape_string($dbCon, $_POST['listype']);
+		$listitle = mysqli_real_escape_string($dbCon, $_GET['nlist_title']);
+		$listype = mysqli_real_escape_string($dbCon, $_GET['listype']);
 		$uid = $_SESSION['id'];
 		$sql = "INSERT INTO lists (id, uid, title, type)
 			VALUES ('', '$uid', '$listitle', '$listype')";
 		$isdup = dupcheck_listitle($listitle, $uid, $dbCon);
 		// This makes sure that the cookies are not reset when looping this form through "addnew.php" to add items to a list
-		if ($_SESSION['title'] == ''){
+		if (!isset($_SESSION['title'])){
 			$_SESSION['title'] = $listitle;
 			}
 		// When user selects cancel on create new list form on "newlst.php" this redirects back to the main user page "user.php"
-		if ($_POST['submit'] == "Cancel"){
-			error_reporting(E_ERROR | E_PARSE);
+		if ($_GET['submit'] == "Cancel"){
 			$_SESSION['reload'] = "TRUE";
 			header("Location: user.php");
 		}
 		if ($listype == ''){
-			error_reporting(E_ERROR | E_PARSE);
 			?>
 				<html> 
 					<head>
@@ -53,7 +51,6 @@ header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
 		}
 		else {
 			if ($listitle == ''){
-				error_reporting(E_ERROR | E_PARSE);
 				?>
 					<html> 
 						<head>
@@ -81,7 +78,6 @@ header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
 				}
 			else {
 				if ($isdup != '0'){
-					error_reporting(E_ERROR | E_PARSE);
 					?>
 						<html> 
 							<head>
@@ -109,10 +105,11 @@ header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
 				}
 				else{
 					if (mysqli_query($dbCon,$sql) == '') {
-			  			die('' . mysqli_error($dbCon));  			
+			  			die('List not created' . mysqli_error($dbCon));  			
 					}
 					else { 	
-							header("Location: new_item.php");
+						$_SESSION['reload'] = "TRUE";
+						header("Location: user.php");
 						}
 					}
 				}

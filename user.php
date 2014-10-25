@@ -11,14 +11,25 @@ session_start();
 //ensuring that important session variables are clear for use
 if (isset($_SESSION['title'])){
 	if ($_SESSION['title'] != ''){
-		$_SESSION['title'] = '';
+		unset($_SESSION['title']);
 	}
 }
 if (isset($_SESSION['url'])){
 	if($_SESSION['url'] != ''){
-		$_SESSION['url'] = '';
+		unset($_SESSION['url']);
 	}
 }
+if (isset($_SESSION['lid'])){
+	if($_SESSION['lid'] != ''){
+		unset($_SESSION['lid']);
+	}
+}
+if (isset($_SESSION['item'])){
+	if($_SESSION['item'] != ''){
+		unset($_SESSION['item']);
+	}
+}
+
 $_SESSION['url'] = basename($_SERVER['PHP_SELF']) . "?" . $_SERVER['QUERY_STRING'];
 if (isset($_SESSION['id'])) {
 	// Put stored session variables into local PHP variable
@@ -120,13 +131,7 @@ $sharedlists = mysqli_query($dbCon, $sharedlist_sql);
 			mysqli_close($dbCon);
 			if($_SESSION['reload'] == "TRUE"){
 				$_SESSION['reload'] = "FALSE";
-				?>
-				<script>
-				$(document).ready(function(){
-				location.reload();
-				});
-				</script>
-				<?
+
 			}
 		 ?>
 		 </ul>

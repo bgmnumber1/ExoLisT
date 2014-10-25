@@ -12,7 +12,7 @@
 	$uid = $_SESSION['id'];
 	$listitle = $_SESSION['title'];
 	$submit = $_POST['submit'];
-	if($_SESSION['lid'] == ''){	
+	if(!isset($_SESSION['lid'])){	
 		$lid = get_lid($uid, $listitle, $dbCon);
 		$_SESSION['lid'] = $lid;
 	}

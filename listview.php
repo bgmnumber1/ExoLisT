@@ -13,12 +13,17 @@ if (isset($_SESSION['page'])){
 }
 if (isset($_SESSION['lid'])){
 	if($_SESSION['lid'] != ''){
-		$_SESSION['lid'] = '';
+		unset($_SESSION['lid']);
 	}
 }
 if (isset($_SESSION['url'])){
 	if($_SESSION['url'] != ''){
-		$_SESSION['url'] = '';
+		unset($_SESSION['url']);
+	}
+}
+if (isset($_SESSION['title'])){
+	if($_SESSION['title'] != ''){
+		unset($_SESSION['title']);
 	}
 }
 $_SESSION['url'] = basename($_SERVER['PHP_SELF']) . "?" . $_SERVER['QUERY_STRING'];
@@ -114,6 +119,10 @@ $item = array();
 	<div data-role="main" class="ui-content">
 	<h3><?php 
 			echo $_SESSION['title']; 
+			?>
+			 
+			<?php
+			echo "(".$lid.")";
 			?>
 	</h3>
 		
