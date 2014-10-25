@@ -86,7 +86,6 @@ $getitem_sql = "SELECT * FROM lists WHERE id = '$lid'";
 $items = mysqli_query($dbCon, $getitem_sql);
 $row = mysqli_fetch_array($items);
 $listitle = $_SESSION['title'] = $row['title'];
-
 $listype = get_listype($lid, $dbCon);
 $getitem_sql = "SELECT * FROM list_content WHERE lid = '$lid'";
 $items = mysqli_query($dbCon, $getitem_sql);
@@ -168,7 +167,7 @@ $item = array();
 	 		 <?php
 			}
 			$_SESSION['item'] = $item;
-			mysqli_close($dbCon);
+			
 		 ?>
 		 </ul>
 		 <br>
@@ -180,12 +179,32 @@ $item = array();
 		 			<li><input type="submit" name="submit" value='Update' form="checker" /></li>
 		 			<?php
 		 			}
+					$shartest_sql = "SELECT title FROM lists WHERE uid = '$uid' AND id = '$lid'";
+					$shartest = mysqli_query($dbCon, $shartest_sql);
+					$shart = mysqli_fetch_array($shartest);
 		 			?>
 		 			<li><a href="new_item.php">Add Item</a></li>
+					<?php
+					if($shart['title'] != ''){
+					?>
 		 			<li><a href="sharing.php">Sharing</a></li>
+					<?php
+					}
+					if($shart['title'] != ''){
+					?>
 					<li><a href="delete_list.php">Delete List</a></li>
+					<?php
+					} else {
+						?>
+					<li><a href="unshare_lst.php">Unshare List</a></li>
+						<?php
+					}
+					?>
 					<li><a href="logout.php">Logout</a></li>
 		</ul>
+		<?php
+		mysqli_close($dbCon);
+		?>
 	</div>
 	</div>
 

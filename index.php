@@ -6,6 +6,7 @@ header("Pragma: no-cache");
 header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
 if (isset($_SESSION['id'])){
 	if($_SESSION['id'] != ''){
+		$_SESSION['reload'] = "TRUE";
 		header("Location: user.php");
 	}
 }
@@ -36,6 +37,7 @@ if (isset($_POST['username'])) {
 		//close database connection
 		mysqli_close($dbCon);
 		// Now direct to users feed
+		$_SESSION['reload'] = "TRUE";
 		header("Location: user.php", true, 303);
 	} else {
 			error_reporting(E_ERROR | E_PARSE);

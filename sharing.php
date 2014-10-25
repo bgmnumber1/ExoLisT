@@ -14,10 +14,18 @@
     $getshare_sql="SELECT suid FROM list_share WHERE lid = '$lid'";
     $getshare = mysqli_query($dbCon, $getshare_sql);
 	if (isset($_POST['searchcont'])){
-		$search = mysqli_real_escape_string($dbCon, strip_tags($_POST['searchcont']));
-		$search = "%".$search."%";
+		$searchent = mysqli_real_escape_string($dbCon, strip_tags($_POST['searchcont']));
+		$search = "%".$searchent."%";
 	    $searchuser = array();
+		if($_POST['searchtype'] == "name"){
 	    $searchlistuser_sql="SELECT * FROM user WHERE fname LIKE '$search' OR lname LIKE '$search'";
+		} 
+		if($_POST['searchtype'] == "email"){
+		$searchlistuser_sql="SELECT * FROM user WHERE email LIKE '$search'";	
+		}
+		if($_POST['searchtype'] == "id"){
+		$searchlistuser_sql="SELECT * FROM user WHERE id = '$searchent'";	
+		}
 	    $search_query = mysqli_query($dbCon, $searchlistuser_sql);
 	}
 	if ($ismine == '1'){
@@ -42,7 +50,12 @@
 					</div>
 				<div data-role="main" class="ui-content">
 					<form id="search" action="sharing.php" method="POST">
-						<input type="text" name="searchcont" placeholder="Search people to share with" /> <br />
+						<input type="text" name="searchcont" placeholder="Search people to share with" />
+						<select name="searchtype">
+						  <option value="name">Name</option>
+						  <option value="email">Email</option>
+						  <option value="id">ID</option>
+						</select>
 						<input type="submit" value="Search" name="Search" />
 					</form>
 					<?php

@@ -20,7 +20,8 @@ header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
 		// When user selects cancel on create new list form on "newlst.php" this redirects back to the main user page "user.php"
 		if ($_POST['submit'] == "Cancel"){
 			error_reporting(E_ERROR | E_PARSE);
-			header("Location: user.php", true, 303);
+			$_SESSION['reload'] = "TRUE";
+			header("Location: user.php");
 		}
 		if ($listype == ''){
 			error_reporting(E_ERROR | E_PARSE);

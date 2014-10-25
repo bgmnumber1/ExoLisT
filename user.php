@@ -1,11 +1,13 @@
 <?php
-session_start();
 include("includes/dbConnect.php");
 include("includes/functions.php");
 header("Cache-control: no-store, no-cache, must-revalidate");
 header("Expires: Mon, 26 Jun 1997 05:00:00 GMT");
 header("Pragma: no-cache");
 header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
+session_start();
+
+
 //ensuring that important session variables are clear for use
 if (isset($_SESSION['title'])){
 	if ($_SESSION['title'] != ''){
@@ -53,6 +55,8 @@ if (isset($_SESSION['id'])) {
 
 $getlist_sql = "SELECT * FROM lists WHERE uid = '$uid'";
 $userlists = mysqli_query($dbCon, $getlist_sql);
+$sharedlist_sql = "SELECT * FROM list_share WHERE suid = '$uid'";
+$sharedlists = mysqli_query($dbCon, $sharedlist_sql);
 
 ?>
 <!DOCTYPE html>
@@ -97,7 +101,33 @@ $userlists = mysqli_query($dbCon, $getlist_sql);
 	 		 	
 	 		 <?php
 			}
+			?>
+		</ul>
+			<br><h3>Shared with me</h3>
+			<ul data-role="listview">
+			<?php
+			
+			while($row0 = mysqli_fetch_array($sharedlists)) {
+				$sharlid = $row0['lid'];
+				$share_sql = "SELECT * FROM lists WHERE id = '$sharlid'";
+				$share = mysqli_query($dbCon, $share_sql);
+				$shar = mysqli_fetch_array($share);
+				?>
+				<li><a href="listview.php?id=<?php echo $shar['id']?>"> <?php echo $shar['title']; ?> </a></li>
+				<?php
+				
+			}
 			mysqli_close($dbCon);
+			if($_SESSION['reload'] == "TRUE"){
+				$_SESSION['reload'] = "FALSE";
+				?>
+				<script>
+				$(document).ready(function(){
+				location.reload();
+				});
+				</script>
+				<?
+			}
 		 ?>
 		 </ul>
 		 <br>
