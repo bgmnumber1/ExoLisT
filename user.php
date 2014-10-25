@@ -93,7 +93,6 @@ $userlists = mysqli_query($dbCon, $getlist_sql);
 			while($row = mysqli_fetch_array($userlists)) {
 			?>
 			
-	 		 	<li><form id="list_link" action="listview.php?lid=<?php echo $row['lid']?>" method="get">	<input type="submit" value="<?php echo $row['title']; ?>" name="submit" /></form></li>
 				<li><a href="listview.php?id=<?php echo $row['id']?>"> <?php echo $row['title']; ?> </a></li>
 	 		 	
 	 		 <?php

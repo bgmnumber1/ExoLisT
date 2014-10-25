@@ -2,10 +2,10 @@
 session_start();
 	include("includes/dbConnect.php");
 	include("includes/functions.php");
-	header("Cache-control: no-store, no-cache, must-revalidate");
-	header("Expires: Mon, 26 Jun 1997 05:00:00 GMT");
-	header("Pragma: no-cache");
-	header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
+	//header("Cache-control: no-store, no-cache, must-revalidate");
+	//header("Expires: Mon, 26 Jun 1997 05:00:00 GMT");
+	//header("Pragma: no-cache");
+	//header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
 if (isset($_SESSION['page'])){
 	if($_SESSION['page'] != ''){
 		$_SESSION['page'] = '';
@@ -77,8 +77,16 @@ $_SESSION['title'] = $_GET['submit'];
 //function to verfiy list ownership or if list is shared
 //if test fails show error - do not have ascces to lsit
 //if pass execute the following code:
-$lid = $_SESSION['id'];
+	
+
+$lid = $_GET['id'];
 $_SESSION['lid'] = $lid;
+
+$getitem_sql = "SELECT * FROM lists WHERE id = '$lid'";
+$items = mysqli_query($dbCon, $getitem_sql);
+$row = mysqli_fetch_array($items);
+$_SESSION['title'] = $row['title'];
+
 $listype = get_listype($lid, $dbCon);
 $getitem_sql = "SELECT * FROM list_content WHERE lid = '$lid'";
 $items = mysqli_query($dbCon, $getitem_sql);
@@ -146,8 +154,8 @@ $item = array();
 								<?php echo $row['content']; ?>
 							</td>
 							<td>
-								<form id="edit_list" action="delete_item.php" method="GET">
-									<input type="submit" value="<?php echo $row['content']; ?>" name="submit" form="edit_list" data-role="button" data-icon="delete" data-iconpos="notext" data-mini="true" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-theme="c" title="Delete" class="ui-btn ui-shadow ui-btn-corner-all ui-mini ui-btn-inline ui-btn-icon-notext ui-btn-up-c"/>
+								<form id="delete_item" action="delete_item.php" method="GET">
+									<input type="submit" value="<?php echo $row['content']; ?>" name="submit" form="delete_item" data-role="button" data-icon="delete" data-iconpos="notext" data-mini="true" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-theme="c" title="Delete" class="ui-btn ui-shadow ui-btn-corner-all ui-mini ui-btn-inline ui-btn-icon-notext ui-btn-up-c"/>
 								</form>
 							</td>
 						<tr>

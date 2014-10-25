@@ -82,10 +82,9 @@ function unshare($lid, $suid, $dbCon) {
   $unshare = mysqli_query($dbCon, $unshare_sql);
   return $unshare;
 }
-function delete_list($listitle, $uid, $dbCon) {
-  $delist_sql="DELETE FROM `lists` WHERE `title` = '$listitle' AND `uid` = '$uid'";
-  mysqli_query($dbCon, $delist_sql);
-
+function delete_list($lid, $dbCon) {
+  $delist_sql="DELETE FROM `lists` WHERE `id` = '$lid'";
+  $result = mysqli_query($dbCon, $delist_sql);
 }
 function delete_listitem($eid, $dbCon) {
   $delistitem_sql="DELETE FROM `list_content` WHERE `eid` = '$eid'";

@@ -2,27 +2,29 @@
 	session_start();
 	include("includes/dbConnect.php");
 	include("includes/functions.php");
-	header("Cache-control: no-store, no-cache, must-revalidate");
-	header("Expires: Mon, 26 Jun 1997 05:00:00 GMT");
-	header("Pragma: no-cache");
-	header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
+	//header("Cache-control: no-store, no-cache, must-revalidate");
+	//header("Expires: Mon, 26 Jun 1997 05:00:00 GMT");
+	//header("Pragma: no-cache");
+	//header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
 	$item = array();
 	$item = $_SESSION['item'];
+	
+	print_r($_GET);
 	
 	 while (list($var, $val) = each($item)) {
         if($_GET[$val] == $val){
         	check_listitem($val, $dbCon);
+			echo "checked" . $val;
         } else {
         	uncheck_listitem($val, $dbCon);
+			echo "unchecked" . $val . "\n";
         }
-    
-        
     }
     
     if (isset($_SESSION['item'])){
-	if ($_SESSION['item'] != ''){
-		$_SESSION['item'] = '';
-	}
+		if ($_SESSION['item'] != ''){
+			$_SESSION['item'] = '';
+		}
 	}
 	if ($_SESSION['item'] == ''){
 		?>

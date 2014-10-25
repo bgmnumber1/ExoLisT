@@ -7,13 +7,12 @@
 	header("Pragma: no-cache");
 	header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
 	error_reporting(E_ERROR | E_PARSE);
-	$list = $_SESSION['title'];
+	$lid = $_SESSION['lid'];
 	$uid = $_SESSION['id'];
-	$lid = get_lid($uid, $list, $dbCon);
 	
 	if($_POST['Yes']){
 		delete_listitems($lid, $uid, $dbCon);
-		delete_list($list, $uid, $dbCon);
+		delete_list($lid, $dbCon);
 		?>
 			<html> 
 				<head>

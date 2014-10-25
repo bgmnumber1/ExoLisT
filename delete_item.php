@@ -9,11 +9,11 @@
 	$uid = $_SESSION['id'];
 	$listitle = $_SESSION['title'];
 	$itemcontent = $_GET['submit'];
-	$lid = get_lid($uid, $listitle, $dbCon);
+	$lid = $_SESSION['lid'];
 	$eid = get_eid($lid, $uid, $itemcontent, $dbCon);
 	$result = delete_listitem($eid, $dbCon);
 	if($result == 'TRUE'){
-		header("Location: listview.php?submit=$listitle");
+		header("Location: listview.php?id=$lid");
 	}
 	else {
 				?>
@@ -33,7 +33,7 @@
 								</div>
 								<div data-role="main">
 									<p><? echo $itemcontent; ?> not deleted!</p>
-									<a href="listview.php?submit=<? echo $listitle; ?>">List View</a>
+									<a href="listview.php?id=<? echo $_SESSION['lid']; ?>">List View</a>
 								</div>
 						<body>
 						
