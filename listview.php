@@ -2,10 +2,10 @@
 session_start();
 	include("includes/dbConnect.php");
 	include("includes/functions.php");
-	//header("Cache-control: no-store, no-cache, must-revalidate");
-	//header("Expires: Mon, 26 Jun 1997 05:00:00 GMT");
-	//header("Pragma: no-cache");
-	//header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
+	header("Cache-control: no-store, no-cache, must-revalidate");
+	header("Expires: Mon, 26 Jun 1997 05:00:00 GMT");
+	header("Pragma: no-cache");
+	header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
 if (isset($_SESSION['page'])){
 	if($_SESSION['page'] != ''){
 		$_SESSION['page'] = '';
@@ -85,7 +85,7 @@ $_SESSION['lid'] = $lid;
 $getitem_sql = "SELECT * FROM lists WHERE id = '$lid'";
 $items = mysqli_query($dbCon, $getitem_sql);
 $row = mysqli_fetch_array($items);
-$_SESSION['title'] = $row['title'];
+$listitle = $_SESSION['title'] = $row['title'];
 
 $listype = get_listype($lid, $dbCon);
 $getitem_sql = "SELECT * FROM list_content WHERE lid = '$lid'";
@@ -117,12 +117,12 @@ $item = array();
 			echo $_SESSION['title']; 
 			?>
 	</h3>
-		<form id="checker" action="checker.php" method="GET" />
+		
 		<ul data-role="listview" data-filter="true">    
 		<?php 		
 			
 			while($row = mysqli_fetch_array($items)) {
-				$eid = get_eid($lid, $uid, $row['content'], $dbCon);
+				$eid = $row['eid'];
 		
 			?>
 				<li>
@@ -139,7 +139,9 @@ $item = array();
 									$checked_item = ischecked($eid, $dbCon);
 									if($listype != "Memo"){
 								?>
+								<form id="checker" action="checker.php" method="GET" >
 									<input type="checkbox" name="<?php echo $eid; ?>" value="<?php echo $eid; ?>" form="checker" <?php echo $checked_item; ?> />
+								</form>
 								<?php 
 									} else {
 									?>
@@ -155,7 +157,7 @@ $item = array();
 							</td>
 							<td>
 								<form id="delete_item" action="delete_item.php" method="GET">
-									<input type="submit" value="<?php echo $row['content']; ?>" name="submit" form="delete_item" data-role="button" data-icon="delete" data-iconpos="notext" data-mini="true" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-theme="c" title="Delete" class="ui-btn ui-shadow ui-btn-corner-all ui-mini ui-btn-inline ui-btn-icon-notext ui-btn-up-c"/>
+									<input type="submit" value="<?php echo $row['eid']; ?>" name="submit" form="delete_item" data-role="button" data-icon="delete" data-iconpos="notext" data-mini="true" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-theme="c" title="Delete" class="ui-btn ui-shadow ui-btn-corner-all ui-mini ui-btn-inline ui-btn-icon-notext ui-btn-up-c" />
 								</form>
 							</td>
 						<tr>

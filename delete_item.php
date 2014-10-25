@@ -8,9 +8,8 @@
 	header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
 	$uid = $_SESSION['id'];
 	$listitle = $_SESSION['title'];
-	$itemcontent = $_GET['submit'];
 	$lid = $_SESSION['lid'];
-	$eid = get_eid($lid, $uid, $itemcontent, $dbCon);
+	$eid = $_GET['submit'];
 	$result = delete_listitem($eid, $dbCon);
 	if($result == 'TRUE'){
 		header("Location: listview.php?id=$lid");
