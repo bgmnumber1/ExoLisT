@@ -73,14 +73,14 @@ $page = array_shift($match);
 if ($page == "/user.php"){
 $_SESSION['title'] = $_GET['submit'];
 }
-$listitle = $_SESSION['title'];
-$getlid_sql = "SELECT id FROM lists WHERE uid = '$uid' AND title = '$listitle'";
-$lid_query = mysqli_query($dbCon, $getlid_sql);
-$row = mysqli_fetch_row($lid_query);
-$lid = $row[0];
+
+//function to verfiy list ownership or if list is shared
+//if test fails show error - do not have ascces to lsit
+//if pass execute the following code:
+$lid = $_SESSION['id'];
 $_SESSION['lid'] = $lid;
 $listype = get_listype($lid, $dbCon);
-$getitem_sql = "SELECT * FROM list_content WHERE `uid` = '$uid' AND lid = '$lid'";
+$getitem_sql = "SELECT * FROM list_content WHERE lid = '$lid'";
 $items = mysqli_query($dbCon, $getitem_sql);
 $count=0;
 $item = array();
