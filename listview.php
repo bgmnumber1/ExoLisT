@@ -59,12 +59,29 @@ if (isset($_SESSION['id'])) {
 
 			<?php
 }
-error_reporting(E_ALL ^ E_NOTICE);
+error_reporting(E_ALL ^ E_NOTICE); 
+	$currentpage = $_SERVER['PHP_SELF'];
+	preg_match('/\/[a-z0-9]+.php/', $_SERVER['HTTP_REFERER'], $match);
+	$page = array_shift($match);
+	$_SESSION['page'] = $currentpage;
+
 	$_GET['submit'] = $form;
 	$form = strip_tags($form);
 	$form = mysqli_real_escape_string($dbCon, $form);
 	$_SESSION['title'] = $form;
   
+
+   
+
+
+//preg_match('/\/[a-z0-9]+.php/', $url, $match);
+
+//$page = array_shift($match);
+
+//if ($page == "/user.php"){
+//$_SESSION['title'] = $_GET['submit'];
+//}
+
 //function to verfiy list ownership or if list is shared
 //if test fails show error - do not have ascces to lsit
 //if pass execute the following code:
