@@ -50,12 +50,12 @@
 					</div>
 				<div data-role="main" class="ui-content">
 					<form id="search" action="sharing.php" method="POST">
-						<input type="text" name="searchcont" placeholder="Search people to share with" />
 						<select name="searchtype">
 						  <option value="name">Name</option>
 						  <option value="email">Email</option>
 						  <option value="id">ID</option>
 						</select>
+						<input type="text" name="searchcont" placeholder="Search people to share with" />
 						<input type="submit" value="Search" name="Search" />
 					</form>
 					<?php
@@ -86,7 +86,7 @@
 						</ul>
 						<?php }
 					}
-					$isshare_sql = "SELECT sid FROM list_share WHERE uid = '$uid' LIMIT 1";
+					$isshare_sql = "SELECT sid FROM list_share WHERE uid = '$uid' AND lid = '$lid' LIMIT 1";
 					$isshare_query = mysqli_query($dbCon, $isshare_sql);
 					$isshare = mysqli_fetch_array($isshare_query);
 					if($isshare['sid'] != ''){
