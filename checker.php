@@ -8,7 +8,7 @@
 	header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
 	$item = array();
 	$item = $_SESSION['item'];
-	
+	$lid = $_SESSION['lid'];
 	 while (list($var, $val) = each($item)) {
         if($_GET[$val] == $val){
         	check_listitem($val, $dbCon);
@@ -40,7 +40,7 @@
   					</div>
   			 		<div data-role="main" class="ui-content">
   						<h2>List <?php echo $_SESSION['title']; ?> has been updated successfully!</h2>
-  						<p><a href="javascript:history.go(-1)" data-role="button">Return</a></p>
+  						<p><a href="listview.php?id=<?php echo $lid; ?>" data-role="button">Return</a></p>
 					</div>
 				</div>
 			</body>

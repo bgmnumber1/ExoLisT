@@ -23,12 +23,8 @@
 		header("Location: new_item.php");
 	}elseif($submit == "No More"){
 		$_SESSION['title'] = '';
-		if (basename($_SESSION['page']) == "listview.php"){
-			header("Location: listview.php?id=$lid");
-		 } else {
-			$_SESSION['reload'] = "TRUE";
-			header("Location: user.php");
-		 }
+		$_SESSION['reload'] = "TRUE";
+		header("Location: listview.php?id=$lid");
 	}
 	else {
 		?>
