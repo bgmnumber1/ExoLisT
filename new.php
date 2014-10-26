@@ -7,8 +7,8 @@ header("Expires: Mon, 26 Jun 1997 05:00:00 GMT");
 header("Pragma: no-cache");
 header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
 	//processing new list into database
-		$listitle = mysqli_real_escape_string($dbCon, $_GET['nlist_title']);
-		$listype = mysqli_real_escape_string($dbCon, $_GET['listype']);
+		$listitle = mysqli_real_escape_string($dbCon, strip_tags($_GET['nlist_title']));
+		$listype = mysqli_real_escape_string($dbCon, strip_tags($_GET['listype']));
 		$uid = $_SESSION['id'];
 		$sql = "INSERT INTO lists (id, uid, title, type)
 			VALUES ('', '$uid', '$listitle', '$listype')";
