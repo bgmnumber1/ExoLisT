@@ -86,6 +86,10 @@
 						</ul>
 						<?php }
 					}
+					$isshare_sql = "SELECT sid FROM list_share WHERE uid = '$uid' LIMIT 1";
+					$isshare_query = mysqli_query($dbCon, $isshare_sql);
+					$isshare = mysqli_fetch_array($isshare_query);
+					if($isshare['sid'] != ''){
 						?>
 						<ul data-role="listview" data-filter="true">
 							<?php 
@@ -113,6 +117,9 @@
 							}
 							?>
 						</ul>
+						<?php
+					}
+						?>
 				</div>
 				</div>
 			</body>
