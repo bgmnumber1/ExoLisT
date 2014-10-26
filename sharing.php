@@ -6,7 +6,7 @@
 	header("Expires: Mon, 26 Jun 1997 05:00:00 GMT");
 	header("Pragma: no-cache");
 	header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
-	$lid = $_SESSION['lid'];
+	$lid = $_GET['lid'];
 	$uid = $_SESSION['id'];
 	$list = $_SESSION['title'];
 	$count = 0;
@@ -86,30 +86,26 @@
 						</ul>
 						<?php }
 					}
-					$isshare_sql = "SELECT sid FROM list_share WHERE uid = '$uid' AND lid = '$lid' LIMIT 1";
+					$isshare_sql = "SELECT user.fname, user.lname, user.id as uid 
+						            FROM list_share 
+						            LEFT JOIN user ON (user.id = list_share.suid)
+						            WHERE list_share.lid = '$lid'";
 					$isshare_query = mysqli_query($dbCon, $isshare_sql);
-					$isshare = mysqli_fetch_array($isshare_query);
-					if($isshare['sid'] != ''){
+					if($isshare_query->num_rows > 0){
 						?>
 						<ul data-role="listview" data-filter="true">
 							<?php 
-							while($row1 = mysqli_fetch_array($getshare)){
-								$id = $row1['suid'];
-								$getsharename_sql = "SELECT id, fname, lname FROM user WHERE id = '$id'";
-								$getsharename = mysqli_query($dbCon, $getsharename_sql);
-								$row2 = mysqli_fetch_array($getsharename);
-							
-								?>
+							while($row = mysqli_fetch_array($isshare_query)){ ?>
 								<li>
 									<table>
 										<tr>
 											<td>
 												<form id="unsharecs" action="unshare.php" method="POST">
-													<input type="hidden" value="<?php echo $row2['id']; ?>" name="suid" />
+													<input type="hidden" value="<?php echo $row['id']; ?>" name="suid" />
 													<input type="submit" value="submit" name="submit" data-role="button" data-icon="delete" data-iconpos="notext" data-mini="true" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-theme="c" title="Delete" class="ui-btn ui-shadow ui-btn-corner-all ui-mini ui-btn-inline ui-btn-icon-notext ui-btn-up-c"/>
 												</form>
 											</td>
-											<td><?php echo $row2['fname']; ?> <?php echo $row2['lname']; ?></td>
+											<td><?php echo $row['fname']; ?> <?php echo $row['lname']; ?></td>
 										</tr>
 									</table>
 								</li>

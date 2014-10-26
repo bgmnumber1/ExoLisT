@@ -184,7 +184,7 @@ $item = array();
 					<?php
 					if($shart['title'] != ''){
 					?>
-		 			<li><a href="sharing.php">Sharing</a></li>
+		 			<li><a href="sharing.php?lid=<?php echo $lid; ?>">Sharing</a></li>
 					<?php
 					}
 					if($shart['title'] != ''){
