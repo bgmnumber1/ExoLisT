@@ -70,10 +70,7 @@ if (isset($_SESSION['id'])) {
 //if pass execute the following code:
 	
 
-$lid_unreal = $_GET['id'];
-$lid = mysqli_real_escape_string($dbCon, $lid_unreal);
-echo $lid;
-$_SESSION['lid'] = $lid;
+$_SESSION['lid'] = $_GET['id'] = $lid;
 
 $getitem_sql = "SELECT * FROM lists WHERE id = '$lid'";
 $items = mysqli_query($dbCon, $getitem_sql);
