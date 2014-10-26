@@ -10,6 +10,8 @@
 	$listitle = $_SESSION['title'];
 	$lid = $_SESSION['lid'];
 	$eid = $_GET['submit'];
+	$eid = strip_tags($eid);
+	$eid = mysqli_real_escape_string($dbCon, $eid);
 	$result = delete_listitem($eid, $dbCon);
 	if($result == 'TRUE'){
 		header("Location: listview.php?id=$lid");

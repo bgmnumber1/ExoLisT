@@ -9,6 +9,8 @@
 	$uid = $_SESSION['id'];
 	$listitle = $_SESSION['title'];
 	$itemcontent = $_GET['submit'];
+	$itemcontent = strip_tags($itemcontent);
+	$itemcontent = mysqli_real_escape_string($dbCon, $itemcontent);
 	$lid = get_lid($uid, $listitle, $dbCon);
 	$eid = get_eid($lid, $uid, $itemcontent, $dbCon);
 	$result = delete_listitem($eid, $dbCon);
