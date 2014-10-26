@@ -8,7 +8,7 @@ header("Pragma: no-cache");
 header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
 $lid = $_SESSION['lid'];
 $uid = $_SESSION['id'];
-$setshare = set_share($uid, $lid, $_GET['submit'], $dbCon);
+$setshare = set_share($uid, $lid, $_POST['suid'], $dbCon);
 if($setshare != 'TRUE'){
 	echo $setshare;
 } else {

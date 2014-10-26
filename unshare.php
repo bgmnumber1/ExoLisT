@@ -8,7 +8,7 @@ header("Pragma: no-cache");
 header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
 $lid = $_SESSION['lid'];
 $uid = $_SESSION['id'];
-$unshare = unshare($lid, $_GET['submit'], $dbCon);
+$unshare = unshare($lid, $_POST['suid'], $dbCon);
 if($unshare != 'TRUE'){
 	echo $unshare;
 	

@@ -46,7 +46,7 @@
 
 					<div data-role="header">
 						<h1 class="ui-title" role="heading" aria-level="1">ExoLisT - Sharing</h1>
-						<a href="listview.php?submit=<? echo $list; ?>" class="ui-btn-right ui-btn ui-btn-up-a ui-shadow ui-btn-corner-all ui-btn-icon-left" data-role="button" data-inline="true" data-icon="back" data-theme="e">Back...</a>
+						<a href="listview.php?id=<? echo $lid; ?>" class="ui-btn-right ui-btn ui-btn-up-a ui-shadow ui-btn-corner-all ui-btn-icon-left" data-role="button" data-inline="true" data-icon="back" data-theme="e">Back...</a>
 					</div>
 				<div data-role="main" class="ui-content">
 					<form id="search" action="sharing.php" method="POST">
@@ -71,8 +71,9 @@
 				       					<col style="width:95%">
 										<tr>
 											<td>
-												<form id="sharecs" action="share.php" method="GET">
-													<input type="submit" value="<?php echo $row['id']; ?>" name="submit" data-role="button" data-icon="arrow-l" data-iconpos="notext" data-mini="true" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-theme="c" title="Delete" class="ui-btn ui-shadow ui-btn-corner-all ui-mini ui-btn-inline ui-btn-icon-notext ui-btn-up-c"/>
+												<form id="sharecs" action="share.php" method="POST">
+													<input type="hidden" value="<?php echo $row['id']; ?>" name="suid" />
+													<input type="submit" value="submit" name="submit" data-role="button" data-icon="arrow-l" data-iconpos="notext" data-mini="true" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-theme="c" title="Delete" class="ui-btn ui-shadow ui-btn-corner-all ui-mini ui-btn-inline ui-btn-icon-notext ui-btn-up-c"/>
 												</form>
 											</td>
 											<td><?php echo $row['fname']; ?> <?php echo $row['lname']; ?> </td>
@@ -99,8 +100,9 @@
 									<table>
 										<tr>
 											<td>
-												<form id="unsharecs" action="unshare.php" method="GET">
-													<input type="submit" value="<?php echo $row2['id']; ?>" name="submit" data-role="button" data-icon="delete" data-iconpos="notext" data-mini="true" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-theme="c" title="Delete" class="ui-btn ui-shadow ui-btn-corner-all ui-mini ui-btn-inline ui-btn-icon-notext ui-btn-up-c"/>
+												<form id="unsharecs" action="unshare.php" method="POST">
+													<input type="hidden" value="<?php echo $row2['id']; ?>" name="suid" />
+													<input type="submit" value="submit" name="submit" data-role="button" data-icon="delete" data-iconpos="notext" data-mini="true" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-theme="c" title="Delete" class="ui-btn ui-shadow ui-btn-corner-all ui-mini ui-btn-inline ui-btn-icon-notext ui-btn-up-c"/>
 												</form>
 											</td>
 											<td><?php echo $row2['fname']; ?> <?php echo $row2['lname']; ?></td>
