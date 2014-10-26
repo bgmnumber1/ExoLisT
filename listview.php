@@ -74,13 +74,13 @@ error_reporting(E_ALL ^ E_NOTICE);
    
 
 
-preg_match('/\/[a-z0-9]+.php/', $url, $match);
+//preg_match('/\/[a-z0-9]+.php/', $url, $match);
 
-$page = array_shift($match);
+//$page = array_shift($match);
 
-if ($page == "/user.php"){
-$_SESSION['title'] = $_GET['submit'];
-}
+//if ($page == "/user.php"){
+//$_SESSION['title'] = $_GET['submit'];
+//}
 
 //function to verfiy list ownership or if list is shared
 //if test fails show error - do not have ascces to lsit
