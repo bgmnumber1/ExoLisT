@@ -33,7 +33,7 @@ if (isset($_SESSION['id'])) {
 	$usname = $_SESSION['username'];
 	$result = "Welcome ".$usname ;
 } else {
-
+	error_reporting(E_ERROR | E_PARSE);
 		 ?>
 		<html> 
 			<head>
@@ -59,7 +59,7 @@ if (isset($_SESSION['id'])) {
 
 			<?php
 }
-
+error_reporting(E_ALL ^ E_NOTICE);
 	$_GET['submit'] = $form;
 	$form = strip_tags($form);
 	$form = mysqli_real_escape_string($dbCon, $form);
@@ -70,7 +70,10 @@ if (isset($_SESSION['id'])) {
 //if pass execute the following code:
 	
 
-$_SESSION['lid'] = $_GET['id'] = $lid;
+$lid = $_GET['id'];
+$lid = strip_tags($lid);
+$lid = mysqli_real_escape_string($dbCon, $lid);
+$_SESSION['lid'] = $lid;
 
 $getitem_sql = "SELECT * FROM lists WHERE id = '$lid'";
 $items = mysqli_query($dbCon, $getitem_sql);

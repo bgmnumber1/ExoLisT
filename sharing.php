@@ -46,7 +46,7 @@
 
 					<div data-role="header">
 						<h1 class="ui-title" role="heading" aria-level="1">ExoLisT - Sharing</h1>
-						<a href="listview.php?id=<? echo $lid; ?>" class="ui-btn-right ui-btn ui-btn-up-a ui-shadow ui-btn-corner-all ui-btn-icon-left" data-role="button" data-inline="true" data-icon="back" data-theme="e">Back...</a>
+						<a href="listview.php?submit=<? echo $list; ?>" class="ui-btn-right ui-btn ui-btn-up-a ui-shadow ui-btn-corner-all ui-btn-icon-left" data-role="button" data-inline="true" data-icon="back" data-theme="e">Back...</a>
 					</div>
 				<div data-role="main" class="ui-content">
 					<form id="search" action="sharing.php" method="POST">
@@ -90,9 +90,9 @@
 							<?php 
 							while($row1 = mysqli_fetch_array($getshare)){
 								$id = $row1['suid'];
-								$getsharename_sql = "SELECT fname, lname FROM user WHERE id = '$id'";
+								$getsharename_sql = "SELECT id, fname, lname FROM user WHERE id = '$id'";
 								$getsharename = mysqli_query($dbCon, $getsharename_sql);
-								$row2 = mysqli_fetch_row($getsharename);
+								$row2 = mysqli_fetch_array($getsharename);
 							
 								?>
 								<li>
@@ -100,7 +100,7 @@
 										<tr>
 											<td>
 												<form id="unsharecs" action="unshare.php" method="GET">
-													<input type="submit" value="<?php echo $id; ?>" name="submit" data-role="button" data-icon="delete" data-iconpos="notext" data-mini="true" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-theme="c" title="Delete" class="ui-btn ui-shadow ui-btn-corner-all ui-mini ui-btn-inline ui-btn-icon-notext ui-btn-up-c"/>
+													<input type="submit" value="<?php echo $row2['id']; ?>" name="submit" data-role="button" data-icon="delete" data-iconpos="notext" data-mini="true" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-theme="c" title="Delete" class="ui-btn ui-shadow ui-btn-corner-all ui-mini ui-btn-inline ui-btn-icon-notext ui-btn-up-c"/>
 												</form>
 											</td>
 											<td><?php echo $row2['fname']; ?> <?php echo $row2['lname']; ?></td>
