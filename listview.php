@@ -64,8 +64,11 @@ error_reporting(E_ALL ^ E_NOTICE);
 	preg_match('/\/[a-z0-9]+.php/', $_SERVER['HTTP_REFERER'], $match);
 	$page = array_shift($match);
 	$_SESSION['page'] = $currentpage;
-	if ($page == "/user.php"){ }
-	$_SESSION['title'] = $_GET['submit'];
+
+	$_GET['submit'] = $form;
+	$form = strip_tags($form);
+	$form = mysqli_real_escape_string($dbCon, $form);
+	$_SESSION['title'] = $form;
   
 
    
