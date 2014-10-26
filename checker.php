@@ -11,8 +11,12 @@
 	$lid = $_SESSION['lid'];
 	 while (list($var, $val) = each($item)) {
         if($_GET[$val] == $val){
+			$val = strip_tags($val);
+			$val = mysqli_real_escape_string($dbCon, $val);
         	check_listitem($val, $dbCon);
         } else {
+			$val = strip_tags($val);
+			$val = mysqli_real_escape_string($dbCon, $val);
         	uncheck_listitem($val, $dbCon);
         }
     }
