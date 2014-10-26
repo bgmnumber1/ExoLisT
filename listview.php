@@ -64,12 +64,9 @@ error_reporting(E_ALL ^ E_NOTICE);
 	preg_match('/\/[a-z0-9]+.php/', $_SERVER['HTTP_REFERER'], $match);
 	$page = array_shift($match);
 	$_SESSION['page'] = $currentpage;
-	if ($page == "/user.php"){ 
-		$_GET['submit'] = $val;
-		$val = strip_tags($val);
-		$val = mysqli_real_escape_string($dbCon, $val);
-		$_SESSION['title'] = $val;
-	}
+	if ($page == "/user.php"){ }
+	$_SESSION['title'] = $_GET['submit'];
+  
 
    
 
