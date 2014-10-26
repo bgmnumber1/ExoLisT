@@ -71,6 +71,8 @@ error_reporting(E_ALL ^ E_NOTICE);
 	
 
 $lid = $_GET['id'];
+$lid = strip_tags($lid);
+$lid = mysqli_real_escape_string($dbCon, $lid);
 $_SESSION['lid'] = $lid;
 
 $getitem_sql = "SELECT * FROM lists WHERE id = '$lid'";
