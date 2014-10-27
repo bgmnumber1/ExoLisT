@@ -6,16 +6,13 @@
 	header("Expires: Mon, 26 Jun 1997 05:00:00 GMT");
 	header("Pragma: no-cache");
 	header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
-	$lid = $_GET['lid'];
-	$lid = strip_tags($lid);
-	$lid = mysqli_real_escape_string($dbCon, $lid);
-	$title = get_listitle($lid, $dbCon);
 	if (isset($_SESSION['id'])) {
 		// Put stored session variables into local PHP variable
 		$uid = $_SESSION['id'];
 		$usname = $_SESSION['username'];
 		$result = "Welcome ".$usname ;
 	} else {
+		error_reporting(E_ERROR | E_PARSE);
 		 ?>
 		<html> 
 			<head>
@@ -57,11 +54,10 @@
 							<h1>ExoLisT - Add Items</h1>
 						</div>
 						<div data-role="main" class="ui-content"> 
-							<p>Adding items to <?php echo $title;?></p>
+							<p>Adding items to <?php echo $_SESSION['title'];?></p>
 							<p>Add an item below</p>
-							<form id="add_item" action="addnew.php" method="GET">
+							<form id="add_item" action="addnew.php" method="post">
 								Item: <input type="text" name="content" /> <br />
-								<input type="hidden" value="<?php echo $lid; ?>" name="lid" >
 								<input type="SUBMIT" value="Add" name="submit" />
 								<input type="SUBMIT" value="No More" name="submit" />
 							</form>

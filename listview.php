@@ -153,7 +153,6 @@ $item = array();
 							</td>
 							<td>
 								<form id="delete_item" action="delete_item.php" method="GET">
-									<input type="hidden" value= "<?php echo $lid; ?>" name="lid" />
 									<input type="submit" value="<?php echo $row['eid']; ?>" name="submit" form="delete_item" data-role="button" data-icon="delete" data-iconpos="notext" data-mini="true" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-theme="c" title="Delete" class="ui-btn ui-shadow ui-btn-corner-all ui-mini ui-btn-inline ui-btn-icon-notext ui-btn-up-c" />
 								</form>
 							</td>
@@ -174,17 +173,14 @@ $item = array();
 		 <ul data-role="listview" data-inset="true" style="min-width:210px;" data-theme="d"><?php
 		 			if($listype != "Memo"){
 		 			?>
-		 			<li>
-						<input type="hidden" name="lid" value="<?php echo $lid; ?>" form="checker" />
-						<input type="submit" name="submit" value='Update' form="checker" />
-					</li>
+		 			<li><input type="submit" name="submit" value='Update' form="checker" /></li>
 		 			<?php
 		 			}
 					$shartest_sql = "SELECT title FROM lists WHERE uid = '$uid' AND id = '$lid'";
 					$shartest = mysqli_query($dbCon, $shartest_sql);
 					$shart = mysqli_fetch_array($shartest);
 		 			?>
-		 			<li><a href="new_item.php?lid=<?php echo $lid; ?>">Add Item</a></li>
+		 			<li><a href="new_item.php">Add Item</a></li>
 					<?php
 					if($shart['title'] != ''){
 					?>
