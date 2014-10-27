@@ -71,13 +71,6 @@ function get_share($lid, $dbCon) {
   }
   return $share;
 }
-function get_listitle($lid, $dbCon){
-	$sql = "SELECT title from lists WHERE id = '$lid'";
-	$query = mysqli_query($dbCon, $sql);
-	$row = mysqli_fetch_row($query);
-	$listitle = $row[0];
-	return $listitle;	
-}
 function set_share($uid, $lid, $suid, $dbCon) {
   $setshare_sql="INSERT INTO list_share (sid, uid, lid, suid)
 			VALUES ('', '$uid', '$lid', '$suid')";
@@ -92,7 +85,6 @@ function unshare($lid, $suid, $dbCon) {
 function delete_list($lid, $dbCon) {
   $delist_sql="DELETE FROM `lists` WHERE `id` = '$lid'";
   $result = mysqli_query($dbCon, $delist_sql);
-  return $result;
 }
 function delete_listitem($eid, $dbCon) {
   $delistitem_sql="DELETE FROM `list_content` WHERE `eid` = '$eid'";
@@ -101,8 +93,7 @@ function delete_listitem($eid, $dbCon) {
 }
 function delete_listitems($lid, $uid, $dbCon) {
   $delistitems_sql="DELETE FROM list_content WHERE lid = '$lid' AND uid = '$uid'";
-  $result = mysqli_query($dbCon, $delistitems_sql);
-  return $result;
+  mysqli_query($dbCon, $delistitems_sql);
 }
 function check_listitem($eid, $dbCon) {
   $cklistitems_sql="UPDATE `list_content` SET `checked` = '1' WHERE `eid` = '$eid'";

@@ -9,14 +9,12 @@
 	$uid = $_SESSION['id'];
 	$listitle = $_SESSION['title'];
 	$lid = $_GET['lid'];
-	$lid = strip_tags($lid);
-	$lid = mysqli_real_escape_string($dbCon, $lid);
 	$eid = $_GET['submit'];
 	$eid = strip_tags($eid);
 	$eid = mysqli_real_escape_string($dbCon, $eid);
 	$result = delete_listitem($eid, $dbCon);
 	if($result == 'TRUE'){
-		header("Location: listview.php?lid=$lid");
+		header("Location: listview.php?id=$lid");
 	}
 	else {
 				?>
@@ -36,7 +34,7 @@
 								</div>
 								<div data-role="main">
 									<p><? echo $itemcontent; ?> not deleted!</p>
-									<a href="listview.php?lid=<? echo $lid; ?>">List View</a>
+									<a href="listview.php?id=<? echo $_SESSION['lid']; ?>">List View</a>
 								</div>
 						<body>
 						

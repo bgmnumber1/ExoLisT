@@ -70,7 +70,7 @@ error_reporting(E_ALL ^ E_NOTICE);
 //if pass execute the following code:
 	
 
-$lid = $_GET['lid'];
+$lid = $_GET['id'];
 $lid = strip_tags($lid);
 $lid = mysqli_real_escape_string($dbCon, $lid);
 $_SESSION['lid'] = $lid;
@@ -192,7 +192,7 @@ $item = array();
 					}
 					if($shart['title'] != ''){
 					?>
-					<li><a href="delete_list.php?lid=<?php echo $lid; ?>">Delete List</a></li>
+					<li><a href="delete_list.php">Delete List</a></li>
 					<?php
 					} else {
 						?>

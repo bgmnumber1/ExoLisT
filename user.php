@@ -103,7 +103,7 @@ $sharedlists = mysqli_query($dbCon, $sharedlist_sql);
 			while($row = mysqli_fetch_array($userlists)) {
 			?>
 			
-				<li><a href="listview.php?lid=<?php echo $row['id']?>"> <?php echo $row['title']; ?> </a></li>
+				<li><a href="listview.php?id=<?php echo $row['id']?>"> <?php echo $row['title']; ?> </a></li>
 	 		 	
 	 		 <?php
 			}
@@ -119,7 +119,7 @@ $sharedlists = mysqli_query($dbCon, $sharedlist_sql);
 				$share = mysqli_query($dbCon, $share_sql);
 				$shar = mysqli_fetch_array($share);
 				?>
-				<li><a href="listview.php?lid=<?php echo $shar['id']?>"> <?php echo $shar['title']; ?> </a></li>
+				<li><a href="listview.php?id=<?php echo $shar['id']?>"> <?php echo $shar['title']; ?> </a></li>
 				<?php
 				
 			}
