@@ -19,11 +19,6 @@ if (isset($_SESSION['url'])){
 		unset($_SESSION['url']);
 	}
 }
-if (isset($_SESSION['lid'])){
-	if($_SESSION['lid'] != ''){
-		unset($_SESSION['lid']);
-	}
-}
 if (isset($_SESSION['item'])){
 	if($_SESSION['item'] != ''){
 		unset($_SESSION['item']);
