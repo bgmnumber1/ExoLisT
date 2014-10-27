@@ -19,7 +19,7 @@
 	}elseif($submit == "No More"){
 		$_SESSION['title'] = '';
 		$_SESSION['reload'] = "TRUE";
-		header("Location: listview.php?id=$lid");
+		header("Location: listview.php?lid=$lid");
 	}
 	else {
 		?>

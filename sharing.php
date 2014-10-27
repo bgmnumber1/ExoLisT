@@ -46,7 +46,7 @@
 
 					<div data-role="header">
 						<h1 class="ui-title" role="heading" aria-level="1">ExoLisT - Sharing</h1>
-						<a href="listview.php?id=<? echo $lid; ?>" class="ui-btn-right ui-btn ui-btn-up-a ui-shadow ui-btn-corner-all ui-btn-icon-left" data-role="button" data-inline="true" data-icon="back" data-theme="e">Back...</a>
+						<a href="listview.php?lid=<? echo $lid; ?>" class="ui-btn-right ui-btn ui-btn-up-a ui-shadow ui-btn-corner-all ui-btn-icon-left" data-role="button" data-inline="true" data-icon="back" data-theme="e">Back...</a>
 					</div>
 				<div data-role="main" class="ui-content">
 					<form id="search" action="sharing.php" method="POST">

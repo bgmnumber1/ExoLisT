@@ -44,7 +44,7 @@
   					</div>
   			 		<div data-role="main" class="ui-content">
   						<h2>List <?php echo $_SESSION['title']; ?> has been updated successfully!</h2>
-  						<p><a href="listview.php?id=<?php echo $lid; ?>" data-role="button">Return</a></p>
+  						<p><a href="listview.php?lid=<?php echo $lid; ?>" data-role="button">Return</a></p>
 					</div>
 				</div>
 			</body>
