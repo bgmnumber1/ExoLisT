@@ -13,7 +13,6 @@ if($unshare != 'TRUE'){
 	echo $unshare;
 	
 } else {
-	header("Location: sharing.php");
-
+	header("Location: sharing.php?lid=$lid");
 }
 ?>

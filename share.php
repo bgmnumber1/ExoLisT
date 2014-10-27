@@ -37,7 +37,7 @@ if($_POST['suid'] == $uid){
 	if($setshare != 'TRUE'){
 		echo $setshare;
 	} else {
-		header("Location: sharing.php");
+		header("Location: sharing.php?lid=$lid");
 	}
 	
 	

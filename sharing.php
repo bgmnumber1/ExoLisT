@@ -58,7 +58,11 @@
 						<input type="text" name="searchcont" placeholder="Search people to share with" />
 						<input type="submit" value="Search" name="Search" />
 					</form>
+					<form id="sharecs" action="share.php" method="POST">
+						<input type="hidden" value="$lid" form="sharecs" name="lid" />
+					</form>
 					<?php
+					
 					if(isset($search_query)){
 						 ?>
 						<ul data-role="listview" data-filter="true">
@@ -71,10 +75,7 @@
 				       					<col style="width:95%">
 										<tr>
 											<td>
-												<form id="sharecs" action="share.php" method="POST">
-													<input type="hidden" value="<?php echo $row['id']; ?>" name="suid" />
-													<input type="submit" value="submit" name="submit" data-role="button" data-icon="arrow-l" data-iconpos="notext" data-mini="true" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-theme="c" title="Delete" class="ui-btn ui-shadow ui-btn-corner-all ui-mini ui-btn-inline ui-btn-icon-notext ui-btn-up-c"/>
-												</form>
+												<input type="submit" value="<?php echo $row['id']; ?>" name="suid" form="sharecs" data-role="button" data-icon="arrow-l" data-iconpos="notext" data-mini="true" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-theme="c" title="Delete" class="ui-btn ui-shadow ui-btn-corner-all ui-mini ui-btn-inline ui-btn-icon-notext ui-btn-up-c"/>
 											</td>
 											<td><?php echo $row['fname']; ?> <?php echo $row['lname']; ?> </td>
 										</tr>
@@ -93,6 +94,9 @@
 					$isshare_query = mysqli_query($dbCon, $isshare_sql);
 					if($isshare_query->num_rows > 0){
 						?>
+						<form id="unsharecs" action="unshare.php" method="POST">
+							<input type="hidden" value="$lid" name="lid" />
+						</form>
 						<ul data-role="listview" data-filter="true">
 							<?php 
 							while($row = mysqli_fetch_array($isshare_query)){ ?>
@@ -100,10 +104,7 @@
 									<table>
 										<tr>
 											<td>
-												<form id="unsharecs" action="unshare.php" method="POST">
-													<input type="hidden" value="<?php echo $row['id']; ?>" name="suid" />
-													<input type="submit" value="submit" name="submit" data-role="button" data-icon="delete" data-iconpos="notext" data-mini="true" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-theme="c" title="Delete" class="ui-btn ui-shadow ui-btn-corner-all ui-mini ui-btn-inline ui-btn-icon-notext ui-btn-up-c"/>
-												</form>
+													<input type="submit" value="<?php echo $row['uid']; ?>" name="suid" form="unsharecs" data-role="button" data-icon="delete" data-iconpos="notext" data-mini="true" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-theme="c" title="Delete" class="ui-btn ui-shadow ui-btn-corner-all ui-mini ui-btn-inline ui-btn-icon-notext ui-btn-up-c"/>
 											</td>
 											<td><?php echo $row['fname']; ?> <?php echo $row['lname']; ?></td>
 										</tr>
