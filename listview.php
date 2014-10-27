@@ -153,6 +153,7 @@ $item = array();
 							</td>
 							<td>
 								<form id="delete_item" action="delete_item.php" method="GET">
+									<input type="hidden" value= "<?php echo $lid; ?>" name="lid" />
 									<input type="submit" value="<?php echo $row['eid']; ?>" name="submit" form="delete_item" data-role="button" data-icon="delete" data-iconpos="notext" data-mini="true" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-theme="c" title="Delete" class="ui-btn ui-shadow ui-btn-corner-all ui-mini ui-btn-inline ui-btn-icon-notext ui-btn-up-c" />
 								</form>
 							</td>
