@@ -183,7 +183,7 @@ $item = array();
 					$shartest = mysqli_query($dbCon, $shartest_sql);
 					$shart = mysqli_fetch_array($shartest);
 		 			?>
-		 			<li><a href="new_item.php">Add Item</a></li>
+		 			<li><a href="new_item.php?lid=<?php echo $lid; ?>">Add Item</a></li>
 					<?php
 					if($shart['title'] != ''){
 					?>
