@@ -113,9 +113,7 @@ $item = array();
 			echo "(".$lid.")";
 			?>
 	</h3>
-		<form id="delete_item" action="delete_item.php" method="GET">
-			<input type="hidden" name="lid" value="<?php echo $lid; ?>" form="delete_item" />
-		</form>
+		
 		<ul data-role="listview" data-filter="true">    
 		<?php 		
 			
@@ -154,7 +152,9 @@ $item = array();
 								<?php echo $row['content']; ?>
 							</td>
 							<td>
-								<input type="submit" value="<?php echo $row['eid']; ?>" name="submit" form="delete_item" data-role="button" data-icon="delete" data-iconpos="notext" data-mini="true" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-theme="c" title="Delete" class="ui-btn ui-shadow ui-btn-corner-all ui-mini ui-btn-inline ui-btn-icon-notext ui-btn-up-c" />
+								<form id="delete_item" action="delete_item.php" method="GET">
+									<input type="submit" value="<?php echo $row['eid']; ?>" name="submit" form="delete_item" data-role="button" data-icon="delete" data-iconpos="notext" data-mini="true" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-theme="c" title="Delete" class="ui-btn ui-shadow ui-btn-corner-all ui-mini ui-btn-inline ui-btn-icon-notext ui-btn-up-c" />
+								</form>
 							</td>
 						<tr>
 					</table>
