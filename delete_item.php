@@ -8,7 +8,7 @@
 	header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
 	$uid = $_SESSION['id'];
 	$listitle = $_SESSION['title'];
-	$lid = $_SESSION['lid'];
+	$lid = $_GET['lid'];
 	$eid = $_GET['submit'];
 	$eid = strip_tags($eid);
 	$eid = mysqli_real_escape_string($dbCon, $eid);
