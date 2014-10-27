@@ -9,6 +9,7 @@
 	$item = array();
 	$item = $_SESSION['item'];
 	$lid = $_GET['lid'];
+	$title = get_listitle($lid, $dbCon);
 	 while (list($var, $val) = each($item)) {
         if($_GET[$val] == $val){
 			$val = strip_tags($val);
@@ -43,7 +44,7 @@
   						<h1 class="ui-title" role="heading" aria-level="1">ExoLisT - Success!</h1>
   					</div>
   			 		<div data-role="main" class="ui-content">
-  						<h2>List <?php echo $_SESSION['title']; ?> has been updated successfully!</h2>
+  						<h2>List <?php echo $title; ?> has been updated successfully!</h2>
   						<p><a href="listview.php?id=<?php echo $lid; ?>" data-role="button">Return</a></p>
 					</div>
 				</div>
