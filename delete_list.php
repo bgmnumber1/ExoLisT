@@ -36,9 +36,7 @@
 				</body>
 			</html>
 		<?
-	}
-
-	
+	}	
 			 ?>
 		<html> 
 			<head>
@@ -58,7 +56,7 @@
   						<h2>Are you sure you want to delete <? echo $list; ?></h2>
 						<form id="delist" action="delete_list.php" method="post">
   							<input type="submit" value="Yes" name="Yes"/>
-							<a href="listview.php?submit=<? echo $list; ?>" data-role="button">No</a>
+							<a href="listview.php?id=<? echo $lid; ?>" data-role="button">No</a>
 						</form>
 					</div>
 				</div>

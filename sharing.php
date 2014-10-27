@@ -71,8 +71,9 @@
 				       					<col style="width:95%">
 										<tr>
 											<td>
-												<form id="sharecs" action="share.php" method="POST">
+												<form id="sharecs" action="share.php" method="GET">
 													<input type="hidden" value="<?php echo $row['id']; ?>" name="suid" />
+													<input type="hidden" value="<?php echo $lid; ?>" name="lid" />
 													<input type="submit" value="submit" name="submit" data-role="button" data-icon="arrow-l" data-iconpos="notext" data-mini="true" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-theme="c" title="Delete" class="ui-btn ui-shadow ui-btn-corner-all ui-mini ui-btn-inline ui-btn-icon-notext ui-btn-up-c"/>
 												</form>
 											</td>
