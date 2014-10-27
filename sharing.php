@@ -59,7 +59,7 @@
 						<input type="submit" value="Search" name="Search" />
 					</form>
 					<form id="sharecs" action="share.php" method="POST">
-						<input type="hidden" value="$lid" form="sharecs" name="lid" />
+						<input type="hidden" value="<?php echo $lid; ?>" form="sharecs" name="lid" />
 					</form>
 					<?php
 					
@@ -95,7 +95,7 @@
 					if($isshare_query->num_rows > 0){
 						?>
 						<form id="unsharecs" action="unshare.php" method="POST">
-							<input type="hidden" value="$lid" name="lid" />
+							<input type="hidden" value="<?php echo $lid; ?>" name="lid" />
 						</form>
 						<ul data-role="listview" data-filter="true">
 							<?php 
