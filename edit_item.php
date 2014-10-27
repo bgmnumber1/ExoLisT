@@ -13,7 +13,7 @@
 	$eid = get_eid($lid, $uid, $itemcontent, $dbCon);
 	$result = delete_listitem($eid, $dbCon);
 	if($result == 'TRUE'){
-		header("Location: listview.php?id=$lid");
+		header("Location: listview.php?submit=$listitle");
 	}
 	else {
 				?>

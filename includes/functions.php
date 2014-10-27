@@ -83,7 +83,7 @@ function unshare($lid, $suid, $dbCon) {
   return $unshare;
 }
 function delete_list($lid, $dbCon) {
-  $delist_sql="DELETE FROM `lists` WHERE `id` = '".$lid."'";
+  $delist_sql="DELETE FROM `lists` WHERE `id` = '$lid'";
   $result = mysqli_query($dbCon, $delist_sql);
 }
 function delete_listitem($eid, $dbCon) {
@@ -92,7 +92,7 @@ function delete_listitem($eid, $dbCon) {
   return $result;
 }
 function delete_listitems($lid, $uid, $dbCon) {
-  $delistitems_sql="DELETE FROM list_content WHERE lid = '".$lid."' AND uid = '".$uid."'";
+  $delistitems_sql="DELETE FROM list_content WHERE lid = '$lid' AND uid = '$uid'";
   mysqli_query($dbCon, $delistitems_sql);
 }
 function check_listitem($eid, $dbCon) {

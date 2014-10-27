@@ -34,7 +34,7 @@
 								</div>
 								<div data-role="main">
 									<p><? echo $itemcontent; ?> not deleted!</p>
-									<a href="listview.php?id=<? echo $lid; ?>">List View</a>
+									<a href="listview.php?id=<? echo $_SESSION['lid']; ?>">List View</a>
 								</div>
 						<body>
 						

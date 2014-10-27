@@ -6,14 +6,9 @@ header("Cache-control: no-store, no-cache, must-revalidate");
 header("Expires: Mon, 26 Jun 1997 05:00:00 GMT");
 header("Pragma: no-cache");
 header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
-$lid = $_GET['lid'];
-$lid = strip_tags($lid);
-$lid = mysqli_real_escape_string($dbCon, $lid);
+$lid = $_SESSION['lid'];
 $uid = $_SESSION['id'];
-$suid = $_GET['suid'];
-$suid = strip_tags($suid);
-$suid = mysqli_real_escape_string($dbCon, $suid);
-if($suid == $uid){
+if($_POST['suid'] == $uid){
 	?>
 		<html>
 			<head>
@@ -38,11 +33,11 @@ if($suid == $uid){
 		</html>
 	<?php
 } else {
-	$setshare = set_share($uid, $lid, $suid, $dbCon);
+	$setshare = set_share($uid, $lid, $_POST['suid'], $dbCon);
 	if($setshare != 'TRUE'){
 		echo $setshare;
 	} else {
-		header("Location: sharing.php?lid=$lid");
+		header("Location: sharing.php");
 	}
 	
 	

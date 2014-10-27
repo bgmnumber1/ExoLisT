@@ -192,7 +192,7 @@ $item = array();
 					}
 					if($shart['title'] != ''){
 					?>
-					<li><a href="delete_list.php?lid=<?php echo $lid; ?>">Delete List</a></li>
+					<li><a href="delete_list.php">Delete List</a></li>
 					<?php
 					} else {
 						?>
