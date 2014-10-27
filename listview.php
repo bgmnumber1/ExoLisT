@@ -59,10 +59,7 @@ if (isset($_SESSION['id'])) {
 
 			<?php
 }
-	$_GET['submit'] = $form;
-	$form = strip_tags($form);
-	$form = mysqli_real_escape_string($dbCon, $form);
-	$_SESSION['title'] = $form;
+
   
 //function to verfiy list ownership or if list is shared
 //if test fails show error - do not have ascces to lsit
@@ -112,7 +109,9 @@ $item = array();
 			echo "(".$lid.")";
 			?>
 	</h3>
-		
+		<form id="checker" action="checker.php" method="GET" >
+			<input type="hidden" name="lid" value="<?php echo $lid; ?>">
+			</form>
 		<ul data-role="listview" data-filter="true">    
 		<?php 		
 			
@@ -134,9 +133,7 @@ $item = array();
 									$checked_item = ischecked($eid, $dbCon);
 									if($listype != "Memo"){
 								?>
-								<form id="checker" action="checker.php" method="GET" >
 									<input type="checkbox" name="<?php echo $eid; ?>" value="<?php echo $eid; ?>" form="checker" <?php echo $checked_item; ?> />
-								</form>
 								<?php 
 									} else {
 									?>

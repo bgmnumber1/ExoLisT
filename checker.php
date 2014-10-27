@@ -8,7 +8,7 @@
 	header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
 	$item = array();
 	$item = $_SESSION['item'];
-	$lid = $_SESSION['lid'];
+	$lid = $_GET['lid'];
 	 while (list($var, $val) = each($item)) {
         if($_GET[$val] == $val){
 			$val = strip_tags($val);

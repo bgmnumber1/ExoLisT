@@ -7,16 +7,15 @@
 	header("Pragma: no-cache");
 	header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
 	
-	
-	$cont = $_POST['content'];
-	$uid = $_SESSION['id'];
-	$listitle = $_SESSION['title'];
-	$submit = $_POST['submit'];
 	if(!isset($_SESSION['lid'])){	
 		$lid = get_lid($uid, $listitle, $dbCon);
 		$_SESSION['lid'] = $lid;
 	}
 	$lid=$_SESSION['lid'];
+	$cont = $_POST['content'];
+	$uid = $_SESSION['id'];
+	$listitle = get_listitle($lid, $dbCon);
+	$submit = $_POST['submit'];
 	if($submit == "Add"){
 		$result = addcontent($uid, $lid, $cont, '', $dbCon);
 		$submit = '';
