@@ -7,6 +7,8 @@ header("Expires: Mon, 26 Jun 1997 05:00:00 GMT");
 header("Pragma: no-cache");
 header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
 $lid = $_SESSION['lid'];
+$lid = strip_tags($lid);
+$lid = mysqli_real_escape_string($dbCon, $lid);
 $uid = $_SESSION['id'];
 $unshare = unshare($lid, $_POST['suid'], $dbCon);
 if($unshare != 'TRUE'){

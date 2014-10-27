@@ -59,7 +59,6 @@ if (isset($_SESSION['id'])) {
 
 			<?php
 }
-error_reporting(E_ALL ^ E_NOTICE);
 	$_GET['submit'] = $form;
 	$form = strip_tags($form);
 	$form = mysqli_real_escape_string($dbCon, $form);
