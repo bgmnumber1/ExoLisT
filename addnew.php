@@ -7,19 +7,17 @@
 	header("Pragma: no-cache");
 	header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
 	
-	if(!isset($_SESSION['lid'])){	
-		$lid = get_lid($uid, $listitle, $dbCon);
-		$_SESSION['lid'] = $lid;
-	}
-	$lid=$_SESSION['lid'];
-	$cont = $_POST['content'];
+	$lid=$_GET['lid'];
+	$lid = strip_tags($lid);
+	$lid = mysqli_real_escape_string($dbCon, $lid);
+	$cont = $_GET['content'];
 	$uid = $_SESSION['id'];
 	$listitle = get_listitle($lid, $dbCon);
-	$submit = $_POST['submit'];
+	$submit = $_GET['submit'];
 	if($submit == "Add"){
 		$result = addcontent($uid, $lid, $cont, '', $dbCon);
 		$submit = '';
-		header("Location: new_item.php");
+		header("Location: new_item.php?lid=$lid");
 	}elseif($submit == "No More"){
 		$_SESSION['title'] = '';
 		$_SESSION['reload'] = "TRUE";
