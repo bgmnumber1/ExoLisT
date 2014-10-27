@@ -8,7 +8,7 @@
 	header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
 	$lid = $_GET['lid'];
 	$uid = $_SESSION['id'];
-	$list = $_SESSION['title'];
+	$list = get_listitle($lid, $dbCon);
 	$count = 0;
 	$ismine = ismine_list($uid, $lid, $dbCon);
     $getshare_sql="SELECT suid FROM list_share WHERE lid = '$lid'";
@@ -100,8 +100,9 @@
 									<table>
 										<tr>
 											<td>
-												<form id="unsharecs" action="unshare.php" method="POST">
+												<form id="unsharecs" action="unshare.php" method="GET">
 													<input type="hidden" value="<?php echo $row['id']; ?>" name="suid" />
+													<input type="hidden" value="<?php echo $lid; ?>" name="lid" />
 													<input type="submit" value="submit" name="submit" data-role="button" data-icon="delete" data-iconpos="notext" data-mini="true" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-theme="c" title="Delete" class="ui-btn ui-shadow ui-btn-corner-all ui-mini ui-btn-inline ui-btn-icon-notext ui-btn-up-c"/>
 												</form>
 											</td>

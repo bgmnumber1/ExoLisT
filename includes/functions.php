@@ -71,6 +71,13 @@ function get_share($lid, $dbCon) {
   }
   return $share;
 }
+function get_listitle($lid, $dbCon){
+	$sql = "SELECT title from lists WHERE id = '$lid'";
+	$query = mysqli_query($dbCon, $sql);
+	$row = mysqli_fetch_row($query);
+	$listitle = $row[0];
+	return $listitle;	
+}
 function set_share($uid, $lid, $suid, $dbCon) {
   $setshare_sql="INSERT INTO list_share (sid, uid, lid, suid)
 			VALUES ('', '$uid', '$lid', '$suid')";
