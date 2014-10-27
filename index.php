@@ -7,7 +7,8 @@ header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
 if (isset($_SESSION['id'])){
 	if($_SESSION['id'] != ''){
 		$_SESSION['reload'] = "TRUE";
-		header("Location: user.php");
+  		header("Location: user.php");
+
 	}
 }
 if (isset($_POST['username'])) {

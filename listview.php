@@ -173,7 +173,10 @@ $item = array();
 		 <ul data-role="listview" data-inset="true" style="min-width:210px;" data-theme="d"><?php
 		 			if($listype != "Memo"){
 		 			?>
-		 			<li><input type="submit" name="submit" value='Update' form="checker" /></li>
+		 			<li>
+						<input type="hidden" name="lid" value="<?php echo $lid; ?>" form="checker" />
+						<input type="submit" name="submit" value='Update' form="checker" />
+					</li>
 		 			<?php
 		 			}
 					$shartest_sql = "SELECT title FROM lists WHERE uid = '$uid' AND id = '$lid'";
