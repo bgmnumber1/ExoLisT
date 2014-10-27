@@ -7,9 +7,9 @@
 	header("Pragma: no-cache");
 	header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
 	$uid = $_SESSION['id'];
-	$listitle = $_SESSION['title'];
-	$lid = $_SESSION['lid'];
-	$eid = $_GET['submit'];
+	$lid = $_GET['lid'];
+	$listitle = get_listitle($lid, $dbCon);
+	$eid = $_GET['eid'];
 	$eid = strip_tags($eid);
 	$eid = mysqli_real_escape_string($dbCon, $eid);
 	$result = delete_listitem($eid, $dbCon);
