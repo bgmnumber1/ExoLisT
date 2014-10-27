@@ -8,13 +8,12 @@ header("Pragma: no-cache");
 header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
 $lid = $_SESSION['lid'];
 $uid = $_SESSION['id'];
-$suid = $_POST['suid'];
-$unshare = unshare($lid, $suid, $dbCon);
+$unshare = unshare($lid, $_POST['suid'], $dbCon);
 if($unshare != 'TRUE'){
 	echo $unshare;
 	
 } else {
-	header("Location: /sharing.php?id=$lid");
+	header("Location: sharing.php");
 
 }
 ?>
