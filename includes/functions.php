@@ -5,6 +5,21 @@ function dupcheck($username, $dbCon) {
   $dupcheck = mysqli_num_rows($result0);
   return $dupcheck;
 }
+function usercheck($lid, $uid, $dbCon){
+  $ck1sql="SELECT uid FROM lists WHERE uid = '$uid' AND id = '$lid'";
+  $ck2sql="SELECT suid FROM list_share WHERE suid = '$uid' AND lid = '$lid'";
+  $ck1_query = mysqli_query($dbCon, $ck1sql);
+  $ck2_query = mysqli_query($dbCon, $ck2sql);
+  $ck1 = mysqli_num_rows($ck1_query);
+  $ck2 = mysqli_num_rows($ck2_query);
+  if($ck1 == '0' AND $ck2 == '0'){
+	  $result = "FALSE";
+	  return $result;
+  } else {
+  		 $result = "TRUE";
+		 return $result;
+  }
+}
 function dupcheck_email($email, $dbCon) {
   $lcksql="SELECT email FROM user WHERE email = '$email'";
   $result1 = mysqli_query($dbCon, $lcksql);

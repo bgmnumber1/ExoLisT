@@ -8,6 +8,7 @@
 	header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
 	$item = array();
 	$item = $_SESSION['item'];
+	$uid = $_SESSION['id'];
 	$lid = $_GET['lid'];
 	$lid = strip_tags($lid);
 	$lid = mysqli_real_escape_string($dbCon, $lid);
