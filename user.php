@@ -25,7 +25,6 @@ if (isset($_SESSION['item'])){
 	}
 }
 
-$_SESSION['url'] = basename($_SERVER['PHP_SELF']) . "?" . $_SERVER['QUERY_STRING'];
 if (isset($_SESSION['id'])) {
 	// Put stored session variables into local PHP variable
 	$uid = $_SESSION['id'];

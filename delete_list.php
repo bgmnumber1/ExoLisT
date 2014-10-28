@@ -6,10 +6,9 @@
 	header("Expires: Mon, 26 Jun 1997 05:00:00 GMT");
 	header("Pragma: no-cache");
 	header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
-	error_reporting(E_ERROR | E_PARSE);
 	$lid = $_SESSION['lid'];
 	$uid = $_SESSION['id'];
-	
+	$list = get_listitle($lid, $dbCon);
 	if($_POST['Yes']){
 		delete_listitems($lid, $uid, $dbCon);
 		delete_list($lid, $dbCon);

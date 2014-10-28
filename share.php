@@ -10,7 +10,10 @@ $lid = $_SESSION['lid'];
 $lid = strip_tags($lid);
 $lid = mysqli_real_escape_string($dbCon, $lid);
 $uid = $_SESSION['id'];
-if($_POST['suid'] == $uid){
+$suid = $_GET['suid'];
+$suid = strip_tags($suid);
+$suid = mysqli_real_escape_string($dbCon, $suid);
+if($_GET['suid'] == $uid){
 	?>
 		<html>
 			<head>
@@ -35,11 +38,11 @@ if($_POST['suid'] == $uid){
 		</html>
 	<?php
 } else {
-	$setshare = set_share($uid, $lid, $_POST['suid'], $dbCon);
+	$setshare = set_share($uid, $lid, $suid, $dbCon);
 	if($setshare != 'TRUE'){
 		echo $setshare;
 	} else {
-		header("Location: sharing.php?lid=$lid");
+		header("Location: sharing.php");
 	}
 	
 	

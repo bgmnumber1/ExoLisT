@@ -6,29 +6,22 @@ session_start();
 	header("Expires: Mon, 26 Jun 1997 05:00:00 GMT");
 	header("Pragma: no-cache");
 	header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
-if (isset($_SESSION['page'])){
-	if($_SESSION['page'] != ''){
-		$_SESSION['page'] = '';
-	}
-}
 if (isset($_SESSION['lid'])){
 	if($_SESSION['lid'] != ''){
 		unset($_SESSION['lid']);
 	}
 }
-if (isset($_SESSION['url'])){
-	if($_SESSION['url'] != ''){
-		unset($_SESSION['url']);
+if (isset($_SESSION['item'])){
+	if($_SESSION['item'] != ''){
+		unset($_SESSION['item']);
 	}
 }
-$_SESSION['url'] = basename($_SERVER['PHP_SELF']) . "?" . $_SERVER['QUERY_STRING'];
 if (isset($_SESSION['id'])) {
 	// Put stored session variables into local PHP variable
 	$uid = $_SESSION['id'];
 	$usname = $_SESSION['username'];
 	$result = "Welcome ".$usname ;
 } else {
-	error_reporting(E_ERROR | E_PARSE);
 		 ?>
 		<html> 
 			<head>
@@ -174,12 +167,12 @@ $title = get_listitle($lid, $dbCon);
 					<?php
 					if($shart['title'] != ''){
 					?>
-		 			<li><a href="sharing.php?lid=<?php echo $lid; ?>">Sharing</a></li>
+		 			<li><a href="sharing.php">Sharing</a></li>
 					<?php
 					}
 					if($shart['title'] != ''){
 					?>
-					<li><a href="delete_list.php">Delete List</a></li>
+					<li><a href="delete_list.php?lid=<?php echo $lid; ?>">Delete List</a></li>
 					<?php
 					} else {
 						?>

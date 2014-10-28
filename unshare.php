@@ -10,11 +10,14 @@ $lid = $_SESSION['lid'];
 $lid = strip_tags($lid);
 $lid = mysqli_real_escape_string($dbCon, $lid);
 $uid = $_SESSION['id'];
-$unshare = unshare($lid, $_POST['suid'], $dbCon);
+$suid = $_GET['suid'];
+$suid = strip_tags($suid);
+$suid = mysqli_real_escape_string($dbCon, $suid);
+$unshare = unshare($lid, $suid, $dbCon);
 if($unshare != 'TRUE'){
 	echo $unshare;
 	
 } else {
-	header("Location: sharing.php?lid=$lid");
+	header("Location: sharing.php");
 }
 ?>

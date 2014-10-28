@@ -6,7 +6,7 @@
 	header("Expires: Mon, 26 Jun 1997 05:00:00 GMT");
 	header("Pragma: no-cache");
 	header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
-	$lid = $_GET['lid'];
+	$lid = $_SESSION['lid'];
 	$lid = strip_tags($lid);
 	$lid = mysqli_real_escape_string($dbCon, $lid);
 	$uid = $_SESSION['id'];
@@ -61,7 +61,7 @@
 						<input type="text" name="searchcont" placeholder="Search people to share <?php echo $list; ?> with" />
 						<input type="submit" value="Search" name="Search" />
 					</form>
-					<form id="sharecs" action="share.php" method="POST">
+					<form id="sharecs" action="share.php" method="GET">
 						<input type="hidden" value="<?php echo $lid; ?>" form="sharecs" name="lid" />
 					</form>
 					<?php
@@ -98,8 +98,8 @@
 					if($isshare_query->num_rows > 0){
 						?>
 						<br>
-						<p>&#34;<?php echo $list;?>&#34; is currently shared with the following users... </p>
-						<form id="unsharecs" action="unshare.php" method="POST">
+						<p><?php echo $list;?> is currently shared with the following users... </p>
+						<form id="unsharecs" action="unshare.php" method="GET">
 							<input type="hidden" value="<?php echo $lid; ?>" name="lid" />
 						</form>
 						<ul data-role="listview" data-filter="true">
