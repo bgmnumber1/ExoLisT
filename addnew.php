@@ -14,7 +14,6 @@
 		$submit = '';
 		header("Location: new_item.php?lid=$lid");
 	}elseif($submit == "No More"){
-		$_SESSION['title'] = '';
 		$_SESSION['reload'] = "TRUE";
 		header("Location: listview.php?id=$lid");
 	}

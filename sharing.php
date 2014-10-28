@@ -10,7 +10,7 @@
 	$lid = strip_tags($lid);
 	$lid = mysqli_real_escape_string($dbCon, $lid);
 	$uid = $_SESSION['id'];
-	$list = $_SESSION['title'];
+	$list = get_listitle($lid, $dbCon);
 	$count = 0;
 	$ismine = ismine_list($uid, $lid, $dbCon);
     $getshare_sql="SELECT suid FROM list_share WHERE lid = '$lid'";
@@ -52,12 +52,13 @@
 					</div>
 				<div data-role="main" class="ui-content">
 					<form id="search" action="sharing.php" method="POST">
-						<select name="searchtype">
+						<label for="searchtype">Choose a Search Criterion:</label>
+						<select name="searchtype" id="searchtype">
 						  <option value="name">Name</option>
 						  <option value="email">Email</option>
 						  <option value="id">ID</option>
 						</select>
-						<input type="text" name="searchcont" placeholder="Search people to share with" />
+						<input type="text" name="searchcont" placeholder="Search people to share <?php echo $list; ?> with" />
 						<input type="submit" value="Search" name="Search" />
 					</form>
 					<form id="sharecs" action="share.php" method="POST">
@@ -96,6 +97,8 @@
 					$isshare_query = mysqli_query($dbCon, $isshare_sql);
 					if($isshare_query->num_rows > 0){
 						?>
+						<br>
+						<p>&#34;<?php echo $list;?>&#34; is currently shared with the following users... </p>
 						<form id="unsharecs" action="unshare.php" method="POST">
 							<input type="hidden" value="<?php echo $lid; ?>" name="lid" />
 						</form>

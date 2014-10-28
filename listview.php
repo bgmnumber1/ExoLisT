@@ -21,11 +21,6 @@ if (isset($_SESSION['url'])){
 		unset($_SESSION['url']);
 	}
 }
-if (isset($_SESSION['title'])){
-	if($_SESSION['title'] != ''){
-		unset($_SESSION['title']);
-	}
-}
 $_SESSION['url'] = basename($_SERVER['PHP_SELF']) . "?" . $_SERVER['QUERY_STRING'];
 if (isset($_SESSION['id'])) {
 	// Put stored session variables into local PHP variable
@@ -74,12 +69,13 @@ $_SESSION['lid'] = $lid;
 $getitem_sql = "SELECT * FROM lists WHERE id = '$lid'";
 $items = mysqli_query($dbCon, $getitem_sql);
 $row = mysqli_fetch_array($items);
-$listitle = $_SESSION['title'] = $row['title'];
+$listitle = $row['title'];
 $listype = get_listype($lid, $dbCon);
 $getitem_sql = "SELECT * FROM list_content WHERE lid = '$lid'";
 $items = mysqli_query($dbCon, $getitem_sql);
 $count=0;
 $item = array();
+$title = get_listitle($lid, $dbCon);
 ?>
 <!DOCTYPE html>
 <html>
@@ -102,7 +98,7 @@ $item = array();
 	</div>
 	<div data-role="main" class="ui-content">
 	<h3><?php 
-			echo $_SESSION['title']; 
+			echo $title;
 			?>
 			 
 			<?php

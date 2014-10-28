@@ -13,10 +13,6 @@ header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
 		$sql = "INSERT INTO lists (id, uid, title, type)
 			VALUES ('', '$uid', '$listitle', '$listype')";
 		$isdup = dupcheck_listitle($listitle, $uid, $dbCon);
-		// This makes sure that the cookies are not reset when looping this form through "addnew.php" to add items to a list
-		if (!isset($_SESSION['title'])){
-			$_SESSION['title'] = $listitle;
-			}
 		// When user selects cancel on create new list form on "newlst.php" this redirects back to the main user page "user.php"
 		if ($_GET['submit'] == "Cancel"){
 			$_SESSION['reload'] = "TRUE";

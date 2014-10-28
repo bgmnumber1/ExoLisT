@@ -9,11 +9,6 @@ session_start();
 
 
 //ensuring that important session variables are clear for use
-if (isset($_SESSION['title'])){
-	if ($_SESSION['title'] != ''){
-		unset($_SESSION['title']);
-	}
-}
 if (isset($_SESSION['url'])){
 	if($_SESSION['url'] != ''){
 		unset($_SESSION['url']);

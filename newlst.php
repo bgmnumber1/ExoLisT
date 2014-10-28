@@ -6,19 +6,12 @@ session_start();
 	header("Expires: Mon, 26 Jun 1997 05:00:00 GMT");
 	header("Pragma: no-cache");
 	header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
-//ensuring that important session variables are clear for use
-if (isset($_SESSION['title'])){
-	if ($_SESSION['title'] != ''){
-		$_SESSION['title'] = '';
-	}
-}
 if (isset($_SESSION['id'])) {
 	// Put stored session variables into local PHP variable
 	$uid = $_SESSION['id'];
 	$usname = $_SESSION['username'];
 	$result = "Welcome ".$usname ;
 } else {
-	error_reporting(E_ERROR | E_PARSE);
 		 ?>
 		<html> 
 			<head>
