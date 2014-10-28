@@ -106,8 +106,15 @@ function unshare($lid, $suid, $dbCon) {
 }
 function delete_list($lid, $dbCon) {
   $delist_sql="DELETE FROM `lists` WHERE `id` = '$lid'";
+  $delistshare_sql="DELETE FROM `list_share` WHERE `lid` = '$lid'";
   $result = mysqli_query($dbCon, $delist_sql);
-  return $result;
+  $result2 = mysqli_query($dbCon, $delistshare_sql);
+  if($result == $result2){
+  	return $result;
+  } else {
+	  return "FALSE";
+  }
+  
 }
 function delete_listitem($eid, $dbCon) {
   $delistitem_sql="DELETE FROM `list_content` WHERE `eid` = '$eid'";
