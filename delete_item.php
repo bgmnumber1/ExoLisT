@@ -7,7 +7,11 @@
 	header("Pragma: no-cache");
 	header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
 	$uid = $_SESSION['id'];
+	$uid = strip_tags($uid);
+	$uid = mysqli_real_escape_string($dbCon, $uid);
 	$lid = $_GET['lid'];
+	$lid = strip_tags($lid);
+	$lid = mysqli_real_escape_string($dbCon, $lid);
 	$listitle = get_listitle($lid, $dbCon);
 	$eid = $_GET['eid'];
 	$eid = strip_tags($eid);

@@ -7,6 +7,8 @@
 	$lid = mysqli_real_escape_string($dbCon, $lid);
 	$cont = $_GET['content'];
 	$uid = $_SESSION['id'];
+	$uid = strip_tags($uid);
+	$uid = mysqli_real_escape_string($dbCon, $uid);
 	$listitle = get_listitle($lid, $dbCon);
 	$submit = $_GET['submit'];
 	if($submit == "Add"){

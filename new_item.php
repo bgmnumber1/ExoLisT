@@ -13,6 +13,8 @@
 	if (isset($_SESSION['id'])) {
 		// Put stored session variables into local PHP variable
 		$uid = $_SESSION['id'];
+		$uid = strip_tags($uid);
+		$uid = mysqli_real_escape_string($dbCon, $uid);
 		$usname = $_SESSION['username'];
 		$result = "Welcome ".$usname ;
 	} else {

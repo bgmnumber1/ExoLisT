@@ -10,6 +10,8 @@
 	$lid = strip_tags($lid);
 	$lid = mysqli_real_escape_string($dbCon, $lid);
 	$uid = $_SESSION['id'];
+	$uid = strip_tags($uid);
+	$uid = mysqli_real_escape_string($dbCon, $uid);
 	$list = get_listitle($lid, $dbCon);
 	$count = 0;
 	$ismine = ismine_list($uid, $lid, $dbCon);

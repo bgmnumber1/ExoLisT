@@ -9,6 +9,8 @@
 	$item = array();
 	$item = $_SESSION['item'];
 	$lid = $_GET['lid'];
+	$lid = strip_tags($lid);
+	$lid = mysqli_real_escape_string($dbCon, $lid);
 	$title = get_listitle($lid, $dbCon);
 	 while (list($var, $val) = each($item)) {
         if($_GET[$val] == $val){

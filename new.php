@@ -10,6 +10,8 @@ header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
 		$listitle = mysqli_real_escape_string($dbCon, strip_tags($_GET['nlist_title']));
 		$listype = mysqli_real_escape_string($dbCon, strip_tags($_GET['listype']));
 		$uid = $_SESSION['id'];
+		$uid = strip_tags($uid);
+		$uid = mysqli_real_escape_string($dbCon, $uid);
 		$sql = "INSERT INTO lists (id, uid, title, type)
 			VALUES ('', '$uid', '$listitle', '$listype')";
 		$isdup = dupcheck_listitle($listitle, $uid, $dbCon);
