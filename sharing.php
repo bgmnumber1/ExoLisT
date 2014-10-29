@@ -44,9 +44,13 @@
 	$ismine = ismine_list($uid, $lid, $dbCon);
     $getshare_sql="SELECT suid FROM list_share WHERE lid = '$lid'";
     $getshare = mysqli_query($dbCon, $getshare_sql);
+	$error='';
 	if (isset($_POST['searchcont'])){
 		$searchent = mysqli_real_escape_string($dbCon, strip_tags($_POST['searchcont']));
 		$search = "%".$searchent."%";
+		if($search == "%%"){
+			header("Location: sharing.php?err=You%20must%20input%20a%20search%20variable");
+		}
 	    $searchuser = array();
 		if($_POST['searchtype'] == "name"){
 	    $searchlistuser_sql="SELECT * FROM user WHERE fname LIKE '$search' OR lname LIKE '$search'";
@@ -60,6 +64,9 @@
 	    $search_query = mysqli_query($dbCon, $searchlistuser_sql);
 	}
 	if ($ismine == '1'){
+		if($_GET['err'] != ''){
+			$error=$_GET['err'];
+		}
 		?>
 			<!DOCTYPE html>
 			<html>
@@ -88,6 +95,7 @@
 						  <option value="id">ID</option>
 						</select>
 						<input type="text" name="searchcont" placeholder="Search people to share <?php echo $list; ?> with" required="required" />
+						<h3 style="color:red;font-weight:normal"><?php echo $error; ?></h3>
 						<input type="submit" value="Search" name="Search" />
 					</form>
 					<form id="sharecs" action="share.php" method="GET">
