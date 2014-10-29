@@ -14,7 +14,6 @@
 	$uid = mysqli_real_escape_string($dbCon, $uid);
 	$list = get_listitle($lid, $dbCon);
 	if($_POST['Yes']){
-		delete_listitems($lid, $uid, $dbCon);
 		delete_list($lid, $dbCon);
 		?>
 			<html> 

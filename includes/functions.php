@@ -117,24 +117,12 @@ function unshare($lid, $suid, $dbCon) {
 }
 function delete_list($lid, $dbCon) {
   $delist_sql="DELETE FROM `lists` WHERE `id` = '$lid'";
-  $delistshare_sql="DELETE FROM `list_share` WHERE `lid` = '$lid'";
   $result = mysqli_query($dbCon, $delist_sql);
-  $result2 = mysqli_query($dbCon, $delistshare_sql);
-  if($result == $result2){
-  	return $result;
-  } else {
-	  return "FALSE";
-  }
-  
+  return $result;
 }
 function delete_listitem($eid, $dbCon) {
   $delistitem_sql="DELETE FROM `list_content` WHERE `eid` = '$eid'";
   $result = mysqli_query($dbCon, $delistitem_sql);
-  return $result;
-}
-function delete_listitems($lid, $uid, $dbCon) {
-  $delistitems_sql="DELETE FROM list_content WHERE lid = '$lid' AND uid = '$uid'";
-  $result = mysqli_query($dbCon, $delistitems_sql);
   return $result;
 }
 function check_listitem($eid, $dbCon) {
