@@ -15,7 +15,7 @@ if (isset($_POST['username'])) {
 	include("includes/dbConnect.php");
 	
 	// Set the posted data from the form into local variables
-	$usname = strip_tags($_POST['username']);
+	$usname = strip_tags(strtolower($_POST['username']));
 	$paswd = strip_tags($_POST['password']);
 	
 	$usname = mysqli_real_escape_string($dbCon, $usname);
@@ -53,8 +53,8 @@ if (isset($_POST['username'])) {
 				</head>
 				<body>
 					<div data-role="page">
- 		 				<div data-role="header">
-  							<h1>ExoLisT - ERROR</h1>
+ 		 				<div data-role="header" style="background-color:green;color:white;">
+  							<h1 class="ui-title" role="heading" aria-level="1" style="font-weight:normal">ExoLisT - ERROR</h1>
   						</div>
   						<div data-role="main" class="ui-content">
   							<h2>Oops that username or password combination was incorrect.</h2>
@@ -83,13 +83,13 @@ if (isset($_POST['username'])) {
 <body>
 	<div data-role="page">
 
-  		<div data-role="header">
-    		<h1>ExoLisT - Login</h1>
+  		<div data-role="header" style="background-color:green;color:white;">
+    		<h1 class="ui-title" role="heading" aria-level="1" style="font-weight:normal">ExoLisT - Login</h1>
   		</div>
 	<div data-role="main" class="ui-content">
 		<form id="form" action="index.php" method="post" enctype="multipart/form-data">
-			Username: <input type="text" name="username" required /> <br />
-			Password: <input type="password" name="password" required /> <br />
+			Username: <input type="text" name="username" required="required"="true" /> <br />
+			Password: <input type="password" name="password" required="required" /> <br />
 			<input type="submit" value="Login" name="Submit" />
 		</form>
 		<a href="register.php" data-role="button">Register</a>

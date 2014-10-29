@@ -46,8 +46,8 @@ if (isset($_SESSION['id'])) {
 			</head>
 			<body>
 				<div data-role="page">
- 		 			<div data-role="header">
-  						<h1 class="ui-title" role="heading" aria-level="1">ExoLisT - ERROR</h1>
+ 		 			<div data-role="header" style="background-color:green;color:white;">
+  						<h1 class="ui-title" role="heading" aria-level="1" style="font-weight:normal">ExoLisT - ERROR</h1>
   					</div>
   			 		<div data-role="main" class="ui-content">
   						<h2>You are not logged in yet</h2>
@@ -81,8 +81,8 @@ $sharedlists = mysqli_query($dbCon, $sharedlist_sql);
 <body>
 <div data-role="page">
 
-  		<div data-role="header">
-    		<h1 class="ui-title" role="heading" aria-level="1">ExoLisT</h1>
+  		<div data-role="header" style="background-color:green;color:white;">
+    		<h1 class="ui-title" role="heading" aria-level="1" style="font-weight:normal">ExoLisT</h1>
     		<a href="#popupMenu" class="ui-btn-right ui-btn ui-btn-up-a ui-shadow ui-btn-corner-all ui-btn-icon-left" data-rel="popup" data-role="button" data-inline="true" data-transition="slidedown" data-icon="gear" data-theme="e">Actions...</a>
 			<div data-role="popup" id="popupMenu" data-theme="d">
 					<ul data-role="listview" data-inset="true" style="min-width:210px;" data-theme="d">

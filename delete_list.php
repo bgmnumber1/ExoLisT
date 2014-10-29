@@ -28,8 +28,8 @@
 				</head>
 				<body>
 					<div data-role="page">
-	 		 			<div data-role="header">
-	  						<h1 class="ui-title" role="heading" aria-level="1">ExoLisT</h1>
+	 		 			<div data-role="header" style="background-color:green;color:white;">
+	  						<h1 class="ui-title" role="heading" aria-level="1" style="font-weight:normal">ExoLisT</h1>
 	  					</div>
 	  			 		<div data-role="main" class="ui-content">
 	  						<h2><? echo $list; ?> was sucessfully deleted</h2>
@@ -54,8 +54,8 @@
 			</head>
 			<body>
 				<div data-role="page">
- 		 			<div data-role="header">
-  						<h1 class="ui-title" role="heading" aria-level="1">ExoLisT</h1>
+ 		 			<div data-role="header" style="background-color:green;color:white;">
+  						<h1 class="ui-title" role="heading" aria-level="1" style="font-weight:normal">ExoLisT</h1>
   					</div>
   			 		<div data-role="main" class="ui-content">
   						<h2>Are you sure you want to delete <? echo $list; ?></h2>

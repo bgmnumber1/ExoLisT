@@ -27,8 +27,8 @@
 			</head>
 			<body>
 				<div data-role="page">
- 		 			<div data-role="header">
-  						<h1>ExoLisT - ERROR</h1>
+ 		 			<div data-role="header" style="background-color:green;color:white;">
+  						<h1 class="ui-title" role="heading" aria-level="1" style="font-weight:normal">ExoLisT - ERROR</h1>
   					</div>
   			 		<div data-role="main" class="ui-content">
   						<h2>You are not logged in yet</h2>
@@ -56,8 +56,8 @@
 				</head>
 				<body>
 					<div data-role="page">
-	 		 			<div data-role="header">
-							<h1>Exolist</h1>
+	 		 			<div data-role="header" style="background-color:green;color:white;">
+							<h1 class="ui-title" role="heading" aria-level="1" style="font-weight:normal">Exolist</h1>
 						</div>
 						<div data-role="main">
 							<p>You do not own the list with id <?php $lid; ?></p>
@@ -84,8 +84,8 @@
 				</head>
 				<body>
 					<div data-role="page">
-					<div data-role="header">
-							<h1>ExoLisT - Add Items</h1>
+					<div data-role="header" style="background-color:green;color:white;">
+							<h1 class="ui-title" role="heading" aria-level="1" style="font-weight:normal">ExoLisT - Add Items</h1>
 						</div>
 						<div data-role="main" class="ui-content"> 
 							<p>Adding items to <?php echo $title;?></p>

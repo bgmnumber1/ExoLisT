@@ -27,8 +27,8 @@ if($isown == "FALSE"){
 			</head>
 			<body>
 				<div data-role="page">
- 		 			<div data-role="header">
-						<h1>Exolist</h1>
+ 		 			<div data-role="header" style="background-color:green;color:white;">
+						<h1 class="ui-title" role="heading" aria-level="1" style="font-weight:normal">Exolist</h1>
 					</div>
 					<div data-role="main">
 						<p>You do not own the list with id <?php $lid; ?></p>

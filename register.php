@@ -1,4 +1,6 @@
-
+<?php
+$error = $_GET['err'];
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,17 +15,18 @@
 <body>
 	<div data-role="page">
 
-  	<div data-role="header">
-  		<h1>ExoLisT - Registration</h1>
+  	<div data-role="header" style="background-color:green;color:white;">
+  		<h1 style="font-weight:normal">ExoLisT - Registration</h1>
   	</div>
 	<div data-role="main" class="ui-content">
+		<h3 style="color:red;font-weight:normal"><?php echo $error; ?></h3>
 		<form id="register" action="registration.php" method="post">
-			<input type="text" name="username" placeholder="Username" required /> <br />
-			<input type="password" name="password" placeholder="Password" required /> <br />
-			<input type="password" name="password2" placeholder="Re-enter Password" required /> <br />
-			<input type="text" name="fname" placeholder="First Name" required /> <br />
-			<input type="text" name="lname" placeholder="Last Name" required /> <br />
-			<input type="email" name="email" placeholder="Email" required /> <br />
+			<input type="text" name="username" placeholder="Username" required="required" /> <br />
+			<input type="password" name="password" placeholder="Password" required="required" /> <br />
+			<input type="password" name="password2" placeholder="Re-enter Password" required="required" /> <br />
+			<input type="text" name="fname" placeholder="First Name" required="required" /> <br />
+			<input type="text" name="lname" placeholder="Last Name" required="required" /> <br />
+			<input type="email" name="email" placeholder="Email" required="required" /> <br />
 			<input type="submit" value="Submit" name="Submit" />
 		</form>
 		<p>Already registered?</p> <a href="index.php" data-role="button">Login Here</a></p>

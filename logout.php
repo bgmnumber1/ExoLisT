@@ -14,8 +14,8 @@ session_destroy();
 	</head>
 	<body>
 		<div data-role="page">
-  			<div data-role="header">
-  				<h1 class="ui-title" role="heading" aria-level="1">ExoLisT - Success!</h1>
+  			<div data-role="header" style="background-color:green;color:white;">
+  				<h1 class="ui-title" role="heading" aria-level="1" style="font-weight:normal">ExoLisT - Success!</h1>
   			</div>
   			<div data-role="main" class="ui-content"> 
 				<p>You are now Logged out!</p>

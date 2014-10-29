@@ -33,8 +33,8 @@ header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
 					</head>
 					<body>
 						<div data-role="page">
-  							<div data-role="header">
-  								<h1>ExoLisT - Error</h1>
+  							<div data-role="header" style="background-color:green;color:white;">
+  								<h1 class="ui-title" role="heading" aria-level="1" style="font-weight:normal">ExoLisT - Error</h1>
   							</div>
   							<div data-role="main" class="ui-content"> 
 								<p>You must select a list type!</p>
@@ -61,8 +61,8 @@ header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
 						</head>
 						<body>
 							<div data-role="page">
-  								<div data-role="header">
-  									<h1>ExoLisT - Error</h1>
+  								<div data-role="header" style="background-color:green;color:white;">
+  									<h1 class="ui-title" role="heading" aria-level="1" style="font-weight:normal">ExoLisT - Error</h1>
   								</div>
   								<div data-role="main" class="ui-content"> 
 									<p>You must input a list title!</p>
@@ -88,8 +88,8 @@ header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
 							</head>
 							<body>
 								<div data-role="page">
-  									<div data-role="header">
-  										<h1>ExoLisT - Error</h1>
+  									<div data-role="header" style="background-color:green;color:white;">
+  										<h1 class="ui-title" role="heading" aria-level="1" style="font-weight:normal">ExoLisT - Error</h1>
   									</div>
   									<div data-role="main" class="ui-content"> 
 										<p>You cannot have 2 lists with the same name!</p>

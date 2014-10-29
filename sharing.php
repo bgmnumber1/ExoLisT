@@ -27,8 +27,8 @@
 				</head>
 				<body>
 					<div data-role="page">
-	 		 			<div data-role="header">
-							<h1>Exolist</h1>
+	 		 			<div data-role="header" style="background-color:green;color:white;">
+							<h1 class="ui-title" role="heading" aria-level="1" style="font-weight:normal">Exolist</h1>
 						</div>
 						<div data-role="main">
 							<p>You do not own the list with id <?php $lid; ?></p>
@@ -75,8 +75,8 @@
 			<body>
 				<div data-role="page">
 
-					<div data-role="header">
-						<h1 class="ui-title" role="heading" aria-level="1">ExoLisT - Sharing</h1>
+					<div data-role="header" style="background-color:green;color:white;">
+						<h1 class="ui-title" role="heading" aria-level="1" style="font-weight:normal">ExoLisT - Sharing</h1>
 						<a href="listview.php?id=<? echo $lid; ?>" class="ui-btn-right ui-btn ui-btn-up-a ui-shadow ui-btn-corner-all ui-btn-icon-left" data-role="button" data-inline="true" data-icon="back" data-theme="e">Back...</a>
 					</div>
 				<div data-role="main" class="ui-content">
@@ -87,7 +87,7 @@
 						  <option value="email">Email</option>
 						  <option value="id">ID</option>
 						</select>
-						<input type="text" name="searchcont" placeholder="Search people to share <?php echo $list; ?> with" />
+						<input type="text" name="searchcont" placeholder="Search people to share <?php echo $list; ?> with" required="required" />
 						<input type="submit" value="Search" name="Search" />
 					</form>
 					<form id="sharecs" action="share.php" method="GET">

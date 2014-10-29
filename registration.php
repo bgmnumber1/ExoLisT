@@ -8,7 +8,6 @@
 	$sql = '';
 	// Check connection
 if (mysqli_connect_errno()) {
-	error_reporting(E_ERROR | E_PARSE);
 	 ?>
 	<html> 
 		<head>
@@ -21,8 +20,8 @@ if (mysqli_connect_errno()) {
 		</head>
 		<body>
 			<div data-role="page">
-  				<div data-role="header">
-  					<h1>ExoLisT - ERROR</h1>
+  				<div data-role="header" style="background-color:green;color:white;">
+  					<h1 class="ui-title" role="heading" aria-level="1" style="font-weight:normal">ExoLisT - ERROR</h1>
   				</div>
   				<div data-role="main" class="ui-content">
 					<p><?php echo "Failed to connect to MySQL: " . mysqli_connect_error(); ?></p>
@@ -36,11 +35,29 @@ if (mysqli_connect_errno()) {
 }
 // escape variables for security
 	$usname = mysqli_real_escape_string($dbCon, strtolower($_POST['username']));
+	if($usname == ''){
+		header("Location: register.php?err=You%20must%20input%20a%20username%0A");
+	}
 	$paswd = password_hash(mysqli_real_escape_string($dbCon, $_POST['password']), PASSWORD_DEFAULT);
+	if($paswd == ''){
+		header("Location: register.php?err=You%20must%20input%20a%20password%0A");
+	}
 	$paswd2 = password_hash(mysqli_real_escape_string($dbCon, $_POST['password2']), PASSWORD_DEFAULT);
+	if($paswd2 == ''){
+		header("Location: register.php?err=You%20must%20input%20a%20password%0A");
+	}
 	$fname = mysqli_real_escape_string($dbCon, $_POST['fname']);
+	if($fname == ''){
+		header("Location: register.php?err=You%20must%20input%20a%20first%20name%0A");
+	}
 	$lname = mysqli_real_escape_string($dbCon, $_POST['lname']);
+	if($lname == ''){
+		header("Location: register.php?err=You%20must%20input%20a%20last%20name%0A");
+	}
 	$email = strtolower($_POST['email']);
+	if($email == ''){
+		header("Location: register.php?err=You%20must%20input%20an%20email%0A");
+	}
 	$isdup = dupcheck($usname, $dbCon);
 	$emailisdup = dupcheck_email($email, $dbCon);
 	if ($isdup != '0') {
@@ -56,8 +73,8 @@ if (mysqli_connect_errno()) {
 							</head>
 							<body>
 								<div data-role="page">
-  									<div data-role="header">
-  										<h1>ExoLisT - ERROR</h1>
+  									<div data-role="header" style="background-color:green;color:white;">
+  										<h1 class="ui-title" role="heading" aria-level="1" style="font-weight:normal">ExoLisT - ERROR</h1>
   									</div>
   									<div data-role="main" class="ui-content">
 											<p>This username is already in use.</p>
@@ -82,8 +99,8 @@ if (mysqli_connect_errno()) {
 								</head>
 								<body>
 									<div data-role="page">
-	  									<div data-role="header">
-	  										<h1>ExoLisT - ERROR</h1>
+	  									<div data-role="header" style="background-color:green;color:white;">
+	  										<h1 class="ui-title" role="heading" aria-level="1" style="font-weight:normal">ExoLisT - ERROR</h1>
 	  									</div>
 	  									<div data-role="main" class="ui-content">
 												<p>This email address is already in use.</p>
@@ -99,7 +116,6 @@ if (mysqli_connect_errno()) {
 				$sql = "INSERT INTO user (id, username, password, fname, lname, email, active)
 				VALUES ('', '$usname', '$paswd', '$fname', '$lname', '$email', '1')";
 			} else {
-					error_reporting(E_ERROR | E_PARSE);
 					 ?>
 					<html> 
 						<head>
@@ -112,8 +128,8 @@ if (mysqli_connect_errno()) {
 						</head>
 						<body>
 							<div data-role="page">
-								<div data-role="header">
-									<h1>ExoLisT - ERROR</h1>
+								<div data-role="header" style="background-color:green;color:white;">
+									<h1 class="ui-title" role="heading" aria-level="1" style="font-weight:normal">ExoLisT - ERROR</h1>
 								</div>
 								<div data-role="main" class="ui-content"> 
 									<p>Passwords do not match.</p>
@@ -144,8 +160,8 @@ else { ?>
 	</head>
 	<body>
 		<div data-role="page">
-  			<div data-role="header">
-  				<h1>ExoLisT - Success!</h1>
+  			<div data-role="header" style="background-color:green;color:white;">
+  				<h1 class="ui-title" role="heading" aria-level="1" style="font-weight:normal">ExoLisT - Success!</h1>
   			</div>
   			<div data-role="main" class="ui-content"> 
 				<p>Record added Successfully.</p>

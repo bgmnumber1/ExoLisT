@@ -26,8 +26,8 @@ if (isset($_SESSION['id'])) {
 			</head>
 			<body>
 				<div data-role="page">
- 		 			<div data-role="header">
-  						<h1>ExoLisT - ERROR</h1>
+ 		 			<div data-role="header" style="background-color:green;color:white;">
+  						<h1 class="ui-title" role="heading" aria-level="1" style="font-weight:normal">ExoLisT - ERROR</h1>
   					</div>
   			 		<div data-role="main" class="ui-content">
   						<h2>You are not logged in yet</h2>
@@ -56,8 +56,8 @@ if (isset($_SESSION['id'])) {
 <body>
 <div data-role="page">
 
-  		<div data-role="header">
-    		<h1>ExoLisT - New</h1>
+  		<div data-role="header" style="background-color:green;color:white;">
+    		<h1 class="ui-title" role="heading" aria-level="1" style="font-weight:normal">ExoLisT - New</h1>
   		</div>
 	<div data-role="main" class="ui-content">
 		<form id="newlist_title" action="new.php" method="GET">
