@@ -92,6 +92,9 @@ $items = mysqli_query($dbCon, $getitem_sql);
 $count=0;
 $item = array();
 $title = get_listitle($lid, $dbCon);
+$shartest_sql = "SELECT title FROM lists WHERE uid = '$uid' AND id = '$lid'";
+$shartest = mysqli_query($dbCon, $shartest_sql);
+$shart = mysqli_fetch_array($shartest);
 ?>
 <!DOCTYPE html>
 <html>
@@ -121,6 +124,14 @@ $title = get_listitle($lid, $dbCon);
 			echo "(".$lid.")";
 			?>
 	</h3>
+	<h4>
+		<?php
+		if($shart['title'] == ''){
+			$sharuser = get_sharuser($lid, $uid, $dbCon);
+			echo "Shared by: ".$sharuser;
+		}
+		?>
+	</h4>
 		<form id="checker" action="checker.php" method="GET" >
 			<input type="hidden" name="lid" value="<?php echo $lid; ?>">
 			</form>
@@ -182,9 +193,6 @@ $title = get_listitle($lid, $dbCon);
 		 			<li><input type="submit" name="submit" value='Update' form="checker" /></li>
 		 			<?php
 		 			}
-					$shartest_sql = "SELECT title FROM lists WHERE uid = '$uid' AND id = '$lid'";
-					$shartest = mysqli_query($dbCon, $shartest_sql);
-					$shart = mysqli_fetch_array($shartest);
 		 			?>
 		 			<li><a href="new_item.php?lid=<?php echo $lid; ?>">Add Item</a></li>
 					<?php

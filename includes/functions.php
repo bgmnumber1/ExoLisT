@@ -93,6 +93,17 @@ function get_listitle($lid, $dbCon){
 	$listitle = $row[0];
 	return $listitle;	
 }
+function get_sharuser($lid, $suid, $dbCon){
+	$sql = "SELECT uid from list_share WHERE lid = '$lid' AND suid ='$suid'";
+	$query = mysqli_query($dbCon, $sql);
+	$row = mysqli_fetch_row($query);
+	$sharuser_id = $row[0];
+	$sql2 = "SELECT username FROM user WHERE id = '$sharuser_id'";
+	$query2 = mysqli_query($dbCon, $sql2);
+	$row2 = mysqli_fetch_row($query2);
+	$sharuser = $row2[0];
+	return $sharuser;	
+}
 function set_share($uid, $lid, $suid, $dbCon) {
   $setshare_sql="INSERT INTO list_share (sid, uid, lid, suid)
 			VALUES ('', '$uid', '$lid', '$suid')";
