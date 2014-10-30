@@ -89,6 +89,7 @@ $sharedlists = mysqli_query($dbCon, $sharedlist_sql);
 						<li data-role="divider" data-theme="e">Choose an action</li>
 						<li><a href="newlst.php">New List</a></li>
 						<li><a href="logout.php">Logout</a></li>
+						<li><a href="#">Help</a></li>
 					</ul>
 			</div>
   		</div>
@@ -132,6 +133,9 @@ $sharedlists = mysqli_query($dbCon, $sharedlist_sql);
 		 ?>
 		 </ul>
 		 <br>
+	</div>
+	<div data-role="footer" data-position="fixed" class="ui-content" style="background-color:green;color:white">
+		
 	</div>
 	</div>
 

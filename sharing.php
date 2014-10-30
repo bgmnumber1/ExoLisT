@@ -160,6 +160,9 @@
 					}
 						?>
 				</div>
+				<div data-role="footer" data-position="fixed" class="ui-content" style="background-color:green;color:white">
+		
+				</div>
 				</div>
 			</body>
 			</html>

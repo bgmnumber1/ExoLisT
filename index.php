@@ -88,11 +88,16 @@ if (isset($_POST['username'])) {
   		</div>
 	<div data-role="main" class="ui-content">
 		<form id="form" action="index.php" method="post" enctype="multipart/form-data">
-			Username: <input type="text" name="username" required="required"="true" /> <br />
-			Password: <input type="password" name="password" required="required" /> <br />
+			<input type="text" name="username" placeholder="Username" required="required"="true" /> <br />
+			<input type="password" name="password" placeholder="Password" required="required" /> <br />
 			<input type="submit" value="Login" name="Submit" />
 		</form>
 		<a href="register.php" data-role="button">Register</a>
+		<a href="contact.php" data-role="button">Contact</a>
+		<a href="#" data-role="button">Help</a>
+	</div>
+	<div data-role="footer" data-position="fixed" class="ui-content" style="background-color:green;color:white">
+		
 	</div>
 	</div>
 </body>

@@ -31,5 +31,9 @@ $error = $_GET['err'];
 		</form>
 		<p>Already registered?</p> <a href="index.php" data-role="button">Login Here</a></p>
 	</div>
+	<div data-role="footer" data-position="fixed" class="ui-content" style="background-color:green;color:white">
+		
+	</div>
+</div>
 </body>
 </html>

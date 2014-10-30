@@ -212,10 +212,15 @@ $shart = mysqli_fetch_array($shartest);
 					}
 					?>
 					<li><a href="logout.php">Logout</a></li>
+					<li><a href="contact.php">Contact</a></li>
+					<li><a href="#">Help</a></li>
 		</ul>
 		<?php
 		mysqli_close($dbCon);
 		?>
+	</div>
+	<div data-role="footer" data-position="fixed" class="ui-content" style="background-color:green;color:white">
+		
 	</div>
 	</div>
 
