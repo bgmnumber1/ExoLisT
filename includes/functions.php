@@ -54,6 +54,34 @@ function addcontent($uid, $lid, $cont, $checked, $dbCon2) {
 		return $result2;
 	}
 }
+function get_fname($uid, $dbCon) {
+  $lcksql="SELECT fname FROM user WHERE id = '$uid'";
+  $result1 = mysqli_query($dbCon, $lcksql);
+  $row = mysqli_fetch_row($result1);
+  $info = $row[0];
+  return $info;
+}
+function get_lname($uid, $dbCon) {
+   $lcksql="SELECT lname FROM user WHERE id = '$uid'";
+  $result1 = mysqli_query($dbCon, $lcksql);
+  $row = mysqli_fetch_row($result1);
+  $info = $row[0];
+  return $info;
+}
+function get_email($uid, $dbCon) {
+   $lcksql="SELECT email FROM user WHERE id = '$uid'";
+  $result1 = mysqli_query($dbCon, $lcksql);
+  $row = mysqli_fetch_row($result1);
+  $info = $row[0];
+  return $info;
+}
+function get_pass($uid, $dbCon) {
+   $lcksql="SELECT password FROM user WHERE id = '$uid'";
+  $result1 = mysqli_query($dbCon, $lcksql);
+  $row = mysqli_fetch_row($result1);
+  $info = $row[0];
+  return $info;
+}
 function get_lid($uid, $listitle, $dbCon) {
   $getlid_sql="SELECT id FROM lists WHERE uid = '$uid' AND title = '$listitle'";
   $getlid = mysqli_query($dbCon, $getlid_sql);
@@ -103,6 +131,49 @@ function get_sharuser($lid, $suid, $dbCon){
 	$row2 = mysqli_fetch_row($query2);
 	$sharuser = $row2[0];
 	return $sharuser;	
+}
+function upd_pass($cpass, $npass, $npassv, $uid, $dbCon) {
+	$lcksql="SELECT password FROM user WHERE id = '$uid'";
+	$result1 = mysqli_query($dbCon, $lcksql);
+	$row = mysqli_fetch_row($result1);
+	$pass = $row[0];
+  $isValid = password_verify($cpass, $pass);
+  if($isValid == '1'){
+	  if($npass == $npassv){
+		  $paswd = password_hash(mysqli_real_escape_string($dbCon, $npass), PASSWORD_DEFAULT);
+		  $sql = "UPDATE `user` set `password` = '$paswd' WHERE `id` = '$uid'";
+		  $query = mysqli_query($dbCon, $sql);
+		  $result = "TRUE";
+	  } else{
+		  $result = "FALSE";
+	  } 
+  } else {
+	  $result = '';
+  }
+  return $result;
+}
+function upd_fname($nfname, $uid, $dbCon) {
+  $sql = "UPDATE `user` set `fname` = '$nfname' WHERE `id` = '$uid'";
+  $query = mysqli_query($dbCon, $sql);
+  $result = "TRUE";
+  return $result;
+}
+function upd_lname($nlname, $uid, $dbCon) {
+  $sql = "UPDATE `user` set `lname` = '$nlname' WHERE `id` = '$uid'";
+  $query = mysqli_query($dbCon, $sql);
+  $result = "TRUE";
+  return $result;
+}
+function upd_email($nemail, $nemail2, $uid, $dbCon) {
+	if($nemail == $nemail2){
+	    $sql = "UPDATE `user` set `email` = '$nemail' WHERE `id` = '$uid'";
+	    $query = mysqli_query($dbCon, $sql);
+	    $result = "TRUE";
+	    return $result;
+	} else {
+		$result = "FALSE";
+		return $result;
+	}
 }
 function set_share($uid, $lid, $suid, $dbCon) {
   $setshare_sql="INSERT INTO list_share (sid, uid, lid, suid)

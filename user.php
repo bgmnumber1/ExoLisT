@@ -33,7 +33,6 @@ if (isset($_SESSION['id'])) {
 	$usname = $_SESSION['username'];
 	$result = "Welcome ".$usname." (".$uid.")" ;
 } else {
-	error_reporting(E_ERROR | E_PARSE);
 		 ?>
 		<html> 
 			<head>
@@ -88,6 +87,7 @@ $sharedlists = mysqli_query($dbCon, $sharedlist_sql);
 					<ul data-role="listview" data-inset="true" style="min-width:210px;" data-theme="d">
 						<li data-role="divider" data-theme="e">Choose an action</li>
 						<li><a href="newlst.php">New List</a></li>
+						<li><a href="account_mod.php">Settings</a></li>
 						<li><a href="logout.php">Logout</a></li>
 						<li><a href="#">Help</a></li>
 					</ul>
@@ -95,7 +95,6 @@ $sharedlists = mysqli_query($dbCon, $sharedlist_sql);
   		</div>
 	<div data-role="main" class="ui-content">
 	<h3><?php 
-			error_reporting(E_ERROR | E_PARSE);
 			echo $result; 
 			?>
 	</h3>
