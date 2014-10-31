@@ -94,7 +94,7 @@ if (isset($_POST['username'])) {
 		</form>
 		<a href="register.php" data-role="button">Register</a>
 		<a href="contact.php" data-role="button">Contact</a>
-		<a href="#" data-role="button">Help</a>
+		<a href="includes/Exolist_guide.pdf" data-role="button">Help</a>
 	</div>
 	<div data-role="footer" data-position="fixed" class="ui-content" style="background-color:green;color:white">
 		

@@ -213,7 +213,7 @@ $shart = mysqli_fetch_array($shartest);
 					?>
 					<li><a href="logout.php">Logout</a></li>
 					<li><a href="contact.php">Contact</a></li>
-					<li><a href="#">Help</a></li>
+					<li><a href="includes/Exolist_guide.pdf">Help</a></li>
 		</ul>
 		<?php
 		mysqli_close($dbCon);
