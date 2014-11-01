@@ -24,7 +24,8 @@ if (isset($_SESSION['item'])){
 		unset($_SESSION['item']);
 	}
 }
-
+//Contains code copied from Peter Entwistile's Tutorial See links on References Page
+//Edited to fit my needs ~Alec Sokso
 if (isset($_SESSION['id'])) {
 	// Put stored session variables into local PHP variable
 	$uid = $_SESSION['id'];

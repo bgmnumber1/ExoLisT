@@ -4,6 +4,8 @@ header("Cache-control: no-store, no-cache, must-revalidate");
 header("Expires: Mon, 26 Jun 1997 05:00:00 GMT");
 header("Pragma: no-cache");
 header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
+//Contains code copied from Peter Entwistile's Tutorial See links on References Page
+//Edited to fit my needs ~Alec Sokso
 if (isset($_SESSION['id'])){
 	if($_SESSION['id'] != ''){
 		$_SESSION['reload'] = "TRUE";
@@ -40,7 +42,6 @@ if (isset($_POST['username'])) {
 		$_SESSION['reload'] = "TRUE";
 		header("Location: user.php", true, 303);
 	} else {
-			error_reporting(E_ERROR | E_PARSE);
 			 ?>
 			<html> 
 				<head>

@@ -6,6 +6,8 @@
 	header("Expires: Mon, 26 Jun 1997 05:00:00 GMT");
 	header("Pragma: no-cache");
 	header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
+	//Contains code copied from Peter Entwistile's Tutorial See links on References Page
+	//Edited to fit my needs ~Alec Sokso
 	if (isset($_SESSION['id'])) {
 		// Put stored session variables into local PHP variable
 		$uid = $_SESSION['id'];

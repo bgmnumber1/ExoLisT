@@ -29,6 +29,11 @@ $error = $_GET['err'];
 			<input type="email" name="email" placeholder="Email" required="required" /> <br />
 			<input type="submit" value="Submit" name="Submit" />
 		</form>
+		<p>By submitting this form you are agreeing to the following policies: </p>
+		<ul>
+			<li><a href="includes/AUP.pdf" target="_blank">Acceptable Use</a></li>
+			<li><a href="includes/PRI.pdf" target="_blank">Privacy</a></li>
+		</ul>
 		<p>Already registered?</p> <a href="index.php" data-role="button">Login Here</a></p>
 	</div>
 	<div data-role="footer" data-position="fixed" class="ui-content" style="background-color:green;color:white">

@@ -117,6 +117,11 @@ if (isset($_SESSION['id'])){
 		
 		}
 		?>
+		<p>ExoList Policies for your reference:</p>
+		<ul>
+			<li><a href="includes/AUP.pdf" target="_blank">Acceptable Use Policy</a></li>
+			<li><a href="includes/PRI.pdf" target="_blank">Privacy Policy</a></li>
+		</ul>
 		<a href="user.php" data-role="button">Back to User Page</a>
 	</div>
 	<div data-role="footer" data-position="fixed" class="ui-content" style="background-color:green;color:white">
