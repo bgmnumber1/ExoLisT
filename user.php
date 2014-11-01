@@ -89,7 +89,7 @@ $sharedlists = mysqli_query($dbCon, $sharedlist_sql);
 						<li><a href="newlst.php">New List</a></li>
 						<li><a href="account_mod.php">Settings</a></li>
 						<li><a href="logout.php">Logout</a></li>
-						<li><a href="includes/Exolist_guide.pdf">Help</a></li>
+						<li><a href="includes/Exolist_guide.pdf" target="_blank">Help</a></li>
 					</ul>
 			</div>
   		</div>
