@@ -76,7 +76,36 @@ if(isset($_POST['new_lname'])){
    	<?php
 } 
 if(isset($_POST['new_email'])){
-	$result = upd_email(mysqli_real_escape_string($dbCon, strip_tags($_POST['new_email'])), mysqli_real_escape_string($dbCon, strip_tags($_POST['new_email2'])), $uid, $dbCon);
+	$isdup = dupcheck_email(mysqli_real_escape_string($dbCon, strip_tags(strtolower($_POST['new_email']))), $dbCon);
+	if($isdup != ''){
+	    ?>
+	   <html> 
+	   	<head>
+	   		<title>ExoLisT - ERROR</title>	
+	   		<meta charset="UTF-8">
+	   		<meta name="viewport" content="width=device-width, initial-scale=1">
+	   		<link rel="stylesheet" href="includes/jquery.mobile-1.4.2.min.css">
+	   		<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+	   		<script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+	   	</head>
+	   	<body>
+	   		<div data-role="page">
+	    			<div data-role="header" style="background-color:green;color:white;">
+	   				<h1 class="ui-title" role="heading" aria-level="1" style="font-weight:normal">ExoLisT - ERROR</h1>
+	   			</div>
+	   	 		<div data-role="main" class="ui-content">
+	   				<h2><?php echo $_POST['new_email']." is already used by a user. Please enter another email."?></h2>
+	   				<p><a href="account_mod.php" data-role="button">Please try again</a></p>
+	   			</div>
+	   		</div>
+	   	</body>
+	   </html>
+
+	   	<?php
+		$result = '';
+	} else {
+		$result = upd_email(mysqli_real_escape_string($dbCon, strip_tags(strtolower($_POST['new_email']))), mysqli_real_escape_string($dbCon, strip_tags($_POST['new_email2'])), $uid, $dbCon);
+	}
 	if($result == "FALSE"){
 	    ?>
 	   <html> 

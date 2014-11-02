@@ -40,7 +40,7 @@
 		<div align="center">
 			<h4>Message from Developer</h2>
 			<p>If you email or call me I will do my best answer your messages as quickly and efficiently as possible. ~Alec</p>
-			<p> If I am not available you can always reference the <a href="#" style="font-weight:normal;">user documentation</a>.</p>
+			<p> If I am not available you can always reference the <a href="includes/Exolist_guide.pdf" style="font-weight:normal;" target="_blank">user documentation</a>.</p>
 		</div>
 	</div>
 </div>
