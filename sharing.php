@@ -127,6 +127,8 @@
 						</ul>
 						<?php }
 					}
+					//help from William Covert
+					//taught me about joins
 					$isshare_sql = "SELECT user.fname, user.lname, user.id as uid 
 						            FROM list_share 
 						            LEFT JOIN user ON (user.id = list_share.suid)
